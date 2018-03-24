@@ -1,4 +1,6 @@
-@function listRemove($list, $index) {
+/* sass-lint:disable function-name-format*/
+
+@function list-remove($list, $index) {
   $new-list: ();
   @for $i from 1 through length($list) {
     @if $i != $index {
@@ -8,7 +10,7 @@
   @return $new-list;
 }
 
-@function listRort($list) {
+@function list-sort($list) {
   $sortedlist: ();
   @while length($list) > 0 {
     $value: nth($list, 1);
@@ -18,13 +20,13 @@
       }
     }
     $sortedlist: append($sortedlist, $value, 'space');
-    $list: listRemove($list, index($list, $value));
+    $list: list-remove($list, index($list, $value));
   }
   @return $sortedlist;
 }
 
-@function mapSort($map) {
-  $keys: listSort(map-keys($map));
+@function map-sort($map) {
+  $keys: list-sort(map-keys($map));
   $sorted-map: ();
   @each $key in $keys {
     $sorted-map: map-merge($sorted-map, ($key: map-get($map, $key)));
@@ -32,7 +34,7 @@
   @return $sorted-map;
 }
 
-@function linearInterpolation($map) {
+@function linear-interpolation($map) {
   $keys: map-keys($map);
   @if (length($keys) != 2) {
     @error'linear-interpolation() $map must be exactly 2 values';
@@ -65,7 +67,7 @@
   }
 
   //Sort the map by viewport width (key)
-  $map: mapSort($map);
+  $map: map-sort($map);
   $keys: map-keys($map);
 
   //Minimum size
@@ -79,7 +81,7 @@
 
       //If values are not equal, perform linear interpolation
       @if ($value1 != $value2) {
-        #{$property}: linearInterpolation(( nth($keys, $i): $value1, nth($keys, ($i + 1)): $value2 ));
+        #{$property}: linear-interpolation(( nth($keys, $i): $value1, nth($keys, ($i + 1)): $value2 ));
       }
       @else {
         #{$property}: $value1;
