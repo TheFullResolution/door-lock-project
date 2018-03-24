@@ -1,0 +1,10 @@
+{
+  "ecmaVersion": "7",
+  "libs": [],
+  "loadEagerly": [],
+  "dontLoad": [],
+  "plugins": {
+    "doc_comment": true,
+    "es_modules": {}
+  }
+}

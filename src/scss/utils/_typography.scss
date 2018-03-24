@@ -1,0 +1,34 @@
+$heading-size: (
+  h1: (425px: 22px, 850px: 32px),
+  h2: (425px: 20px, 850px: 28px),
+  h3: (425px: 18px, 850px: 22px),
+  h4: (425px: 16px, 850px: 18px),
+  h5: (425px: 14px, 850px: 16px)
+);
+
+$text-size: (425px: 16px, 850px: 18px);
+
+$text-size-small: (425px: 14px, 850px: 16px);
+
+@mixin heading-typography(
+  $kind: h1,
+  $color: $app-black,
+  $font-family: $font-headers
+) {
+  @include fluid-sizing('font-size', map-get($heading-size, $kind));
+  color: $color;
+  font-family: $font-family;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@mixin text-typography(
+  $size-table: $text-size,
+  $color: $app-black,
+  $font-family: $font-body
+) {
+  @include fluid-sizing('font-size', $size-table);
+  color: $color;
+  font-family: $font-family;
+  line-height: 1.5;
+}

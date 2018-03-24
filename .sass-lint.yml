@@ -1,0 +1,223 @@
+files:
+  include:
+    - 'src/**/*.scss'
+
+rules:
+  attribute-quotes:
+    - 2
+    -
+      include: true
+
+  bem-depth:
+    - 2
+    -
+      max-depth: 4
+
+  border-zero:
+    - 2
+    -
+      convention: none
+
+  brace-style:
+    - 2
+    -
+      style: stroustrup
+      allow-single-line: true
+
+  class-name-format:
+    - 2
+    -
+      allow-leading-underscore: false
+      convention: camelcase
+      convention-explanation: Just use ClassCase or camelCase
+
+  clean-import-paths:
+    - 2
+    -
+      leading-underscore: false
+      filename-extension: false
+
+  declarations-before-nesting: 2
+
+  empty-args:
+    - 2
+    -
+      include: false
+
+  empty-line-between-blocks:
+    - 2
+    -
+      include: true
+      allow-single-line-rulesets: true
+
+  extends-before-declarations: 2
+  extends-before-mixins: 2
+
+  final-newline:
+    - 2
+    -
+      include: true
+
+  force-attribute-nesting: 2
+  force-element-nesting: 2
+  force-pseudo-nesting: 2
+
+  function-name-format:
+    - 2
+    -
+      allow-leading-underscore: false
+      convention: camelcase
+      convention-explanation: Just use camelCase
+
+  hex-length:
+    - 2
+    -
+      style: long
+
+  hex-notation:
+    - 2
+    -
+      style: uppercase
+
+  id-name-format:
+    - 2
+    - allow-leading-underscore: false
+      convention: pascalcase
+      convention-explanation: Just use ClassCase
+
+  indentation:
+    - 2
+    - size: 2
+
+  leading-zero:
+    - 2
+    -
+      include: true
+
+  max-line-length:
+    - 2
+    -
+      length: 120
+
+  mixin-name-format:
+    - 2
+    -
+      allow-leading-underscore: false
+      convention: hyphenatedlowercase
+      convention-explanation: Just use hyphenated-lowercase
+
+  nesting-depth:
+    - 2
+    -
+      max-depth: 4
+
+  no-color-keywords: 2
+  no-color-literals:
+    - 2
+    -
+      allow-variable-identifiers: false
+      allow-rgba: true
+      allow-map-identifiers: true
+
+  no-css-comments: 0
+
+  no-disallowed-properties : 0
+
+  no-duplicate-properties: 2
+
+  no-empty-rulesets: 2
+
+  no-extends: 0
+
+  no-ids: 2
+
+  no-important: 2
+
+  no-invalid-hex: 2
+
+  no-mergeable-selectors: 2
+
+  no-misspelled-properties: 2
+
+  no-trailing-whitespace: 2
+
+  no-trailing-zero: 2
+
+  no-transition-all: 2
+
+  no-universal-selectors: 2
+
+  no-url-domains: 2
+
+  no-vendor-prefixes: 2
+
+  one-declaration-per-line: 2
+
+  property-sort-order:
+    - 2
+    -
+      order: alphabetical
+
+  pseudo-element: 2
+
+  quotes:
+    - 2
+    -
+      style: sinigle
+
+  shorthand-values: 1
+
+  single-line-per-selector: 2
+
+  space-after-bang: 0
+
+  space-after-colon:
+    - 2
+    -
+      include: true
+
+  space-after-comma:
+    - 2
+    -
+      include: true
+
+  space-around-operator:
+    - 2
+    -
+      include: true
+
+  space-before-bang:
+    - 2
+    -
+      include: true
+
+  space-before-brace:
+    - 2
+    -
+      include: true
+
+  space-before-colon:
+    - 2
+    -
+      include: false
+
+  space-between-parens:
+    - 2
+    -
+      include: false
+
+  trailing-semicolon:
+    - 2
+    -
+      include: true
+
+  url-quotes: 2
+
+  variable-name-format:
+    - 2
+    -
+      allow-leading-underscore: false
+      convention: hyphenatedlowercase
+      convention-explanation: Just use kebab-case
+
+  zero-unit: 0

@@ -1,0 +1,94 @@
+@function listRemove($list, $index) {
+  $new-list: ();
+  @for $i from 1 through length($list) {
+    @if $i != $index {
+      $new-list: append($new-list, nth($list, $i), 'space');
+    }
+  }
+  @return $new-list;
+}
+
+@function listRort($list) {
+  $sortedlist: ();
+  @while length($list) > 0 {
+    $value: nth($list, 1);
+    @each $item in $list {
+      @if $item < $value {
+        $value: $item;
+      }
+    }
+    $sortedlist: append($sortedlist, $value, 'space');
+    $list: listRemove($list, index($list, $value));
+  }
+  @return $sortedlist;
+}
+
+@function mapSort($map) {
+  $keys: listSort(map-keys($map));
+  $sorted-map: ();
+  @each $key in $keys {
+    $sorted-map: map-merge($sorted-map, ($key: map-get($map, $key)));
+  }
+  @return $sorted-map;
+}
+
+@function linearInterpolation($map) {
+  $keys: map-keys($map);
+  @if (length($keys) != 2) {
+    @error'linear-interpolation() $map must be exactly 2 values';
+  }
+
+  //The slope
+
+  $dd: map-get($map, nth($keys, 2)) - map-get($map, nth($keys, 1));
+  $dv: (nth($keys, 2) - nth($keys, 1));
+  $m: $dd / $dv;
+
+  //The y-intercept
+
+  $b: map-get($map, nth($keys, 1)) - $m * nth($keys, 1);
+  //Determine if the sign should be positive or negative
+  $sign: '+';
+  @if ($b < 0) {
+    $sign: '-';
+    $b: abs($b);
+  }
+  @return calc(#{$m * 100}vw #{$sign} #{$b});
+}
+@mixin fluid-sizing($property, $map) {
+  //Get the number of provided breakpoints
+  $length: length(map-keys($map));
+  //Error if the number of breakpoints is < 2
+
+  @if ($length < 2) {
+    @error'fluid-sizing() $map requires at least values';
+  }
+
+  //Sort the map by viewport width (key)
+  $map: mapSort($map);
+  $keys: map-keys($map);
+
+  //Minimum size
+  #{$property}: map-get($map, nth($keys, 1));
+
+  //Interpolated size through breakpoints
+  @for $i from 1 through ($length - 1) {
+    @media (min-width: nth($keys, $i)) {
+      $value1: map-get($map, nth($keys, $i));
+      $value2: map-get($map, nth($keys, ($i + 1)));
+
+      //If values are not equal, perform linear interpolation
+      @if ($value1 != $value2) {
+        #{$property}: linearInterpolation(( nth($keys, $i): $value1, nth($keys, ($i + 1)): $value2 ));
+      }
+      @else {
+        #{$property}: $value1;
+      }
+    }
+  }
+
+  //Maxmimum size
+  @media (min-width: nth($keys, $length)) {
+    #{$property}: map-get($map, nth($keys, $length));
+  }
+}

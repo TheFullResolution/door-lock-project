@@ -1,0 +1,49 @@
+.hidden {
+  overflow: hidden;
+}
+
+/* sass-lint:disable no-universal-selectors force-pseudo-nesting*/
+* {
+  box-sizing: border-box;
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+
+  :focus:not(.focus-visible) {
+    outline-width: 0;
+  }
+}
+/* sass-lint:enable no-universal-selectors force-pseudo-nesting*/
+
+body {
+  @include text-typography;
+  background-color: $app-white;
+  color: $app-black;
+  font-family: $font-body;
+}
+
+%margin-padding {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  @extend %margin-padding;
+  font-family: $font-headers;
+  font-weight: normal;
+}
+
+p {
+  @extend %margin-padding;
+}
+
+a {
+  color: $app-blue;
+}
+
+picture {
+  display: block;
+}

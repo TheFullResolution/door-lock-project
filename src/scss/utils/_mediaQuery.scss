@@ -1,0 +1,35 @@
+@mixin mobile-small {
+  @media (max-width: #{$mobile-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile-big {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin max-width {
+  @media (max-width: #{$max-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin more-max-width {
+  @media (min-width: #{$max-width}) {
+    @content;
+  }
+}
