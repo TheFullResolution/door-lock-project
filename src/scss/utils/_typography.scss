@@ -6,13 +6,19 @@ $heading-size: (
   h5: (425px: 14px, 850px: 16px)
 );
 
-$text-size: (425px: 16px, 850px: 18px);
+$text-size: (
+  425px: 17px,
+  850px: 19px
+);
 
-$text-size-small: (425px: 14px, 850px: 16px);
+$text-size-small: (
+  425px: 14px,
+  850px: 16px
+);
 
 @mixin heading-typography(
   $kind: h1,
-  $color: $app-black,
+  $color: $app-white,
   $font-family: $font-headers
 ) {
   @include fluid-sizing('font-size', map-get($heading-size, $kind));
@@ -24,7 +30,7 @@ $text-size-small: (425px: 14px, 850px: 16px);
 
 @mixin text-typography(
   $size-table: $text-size,
-  $color: $app-black,
+  $color: $app-white,
   $font-family: $font-body
 ) {
   @include fluid-sizing('font-size', $size-table);

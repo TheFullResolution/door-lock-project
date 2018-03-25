@@ -19,8 +19,7 @@
 
 body {
   @include text-typography;
-  background-color: $app-white;
-  color: $app-black;
+  background-color: $app-blue;
   font-family: $font-body;
 }
 

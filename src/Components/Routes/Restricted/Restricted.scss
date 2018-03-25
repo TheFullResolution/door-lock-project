@@ -1,0 +1,35 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: $max-width;
+  padding: {
+    bottom: $padding-single;
+    left: $padding-container;
+    right: $padding-container;
+    top: $padding-double;
+  }
+}
+
+.wrapper {
+  text-align: center;
+
+  i {
+    color: $app-red;
+    margin: {
+      bottom: $padding-double;
+      top: $padding-double;
+    }
+  }
+
+  p {
+    margin: {
+      bottom: $padding-single;
+      top: $padding-single;
+    }
+  }
+}

@@ -5,6 +5,8 @@ import { Route, Switch } from 'react-router-dom'
 import { Login } from '../Routes/Login/Login'
 import { Dashboard } from '../Routes/Dashboard/Dashboard'
 import { NotFound } from '../Routes/NotFound/NotFound'
+import { Restricted } from '../Routes/Restricted/Restricted'
+import { Home } from '../Routes/Home/Home'
 import { PrivateRoute } from './PrivateRoute/PrivateRoute'
 
 export const App = () => (
@@ -13,7 +15,11 @@ export const App = () => (
 
     <Switch>
       <Route path="/login" component={Login} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
+      <Route path="/restricted" component={Restricted} />
+
+      <PrivateRoute path="/" component={Home} exact={true} />
+      <PrivateRoute path="/dashboard" component={Dashboard} adminOnly={true} />
+
       <Route component={NotFound} />
     </Switch>
   </div>
