@@ -1,0 +1,41 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: $max-width;
+  padding: {
+    bottom: $padding-single;
+    left: $padding-container;
+    right: $padding-container;
+    top: $padding-double;
+  }
+
+  i {
+    color: $app-green;
+    margin: {
+      bottom: $padding-double;
+      top: $padding-double;
+    }
+  }
+}
+
+.loading {
+  &::after {
+    animation: ellipsis steps(4, end) 900ms infinite;
+    content: '\2026'; /* ascii code for the ellipsis character */
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    width: 0px;
+  }
+}
+
+@keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}

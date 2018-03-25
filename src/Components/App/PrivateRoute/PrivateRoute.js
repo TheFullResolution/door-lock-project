@@ -6,6 +6,7 @@ import {
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Redirect, withRouter } from 'react-router-dom'
+import { Loading } from '../../Blocks/Loading/Loading'
 
 export class PrivateRouteComponent extends Component {
   static propTypes = {
@@ -28,7 +29,7 @@ export class PrivateRouteComponent extends Component {
         {...rest}
         render={props =>
           !authLoaded ? (
-            <div>Loading</div>
+            <Loading />
           ) : authExists ? (
             <Component {...props} />
           ) : (
