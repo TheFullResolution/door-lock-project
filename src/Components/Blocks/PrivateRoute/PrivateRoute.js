@@ -15,19 +15,13 @@ import {
 
 export class PrivateRouteComponent extends Component {
   static propTypes = {
-    adminOnly: PropTypes.bool.isRequired,
+    adminOnly: PropTypes.bool,
     authExists: PropTypes.bool,
     authLoaded: PropTypes.bool,
     component: PropTypes.func,
     history: PropTypes.object,
     profileAdmin: PropTypes.bool,
     profileLoaded: PropTypes.bool
-  }
-
-  static propTypes = {
-    authExists: PropTypes.bool,
-    authLoaded: PropTypes.bool,
-    history: PropTypes.object
   }
 
   render() {
@@ -40,7 +34,7 @@ export class PrivateRouteComponent extends Component {
       component: Component,
       ...rest
     } = this.props
-    console.log()
+
     return (
       <Route
         {...rest}
@@ -66,7 +60,6 @@ export class PrivateRouteComponent extends Component {
               />
             )
           }
-
           //if all other coditions not met, go to login page
           return (
             <Redirect

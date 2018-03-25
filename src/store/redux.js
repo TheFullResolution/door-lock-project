@@ -19,6 +19,7 @@ const firebaseConfig = {
 // react-redux-firebase options
 const config = {
   userProfile: 'users',
+  profileParamsToPopulate: ['businesses:businesses'],
   enableLogging: false
 }
 

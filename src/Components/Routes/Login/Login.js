@@ -6,18 +6,60 @@ import PropTypes from 'prop-types'
 import { validate } from './methods/validate'
 import { submit } from './methods/submit'
 import { withFirebase } from 'react-redux-firebase'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Loading } from '../../Blocks/Loading/Loading'
+import {
+  getIfAuthorized,
+  getIfAuthLoaded
+} from '../../../store/firebase/authSelectors'
+import {
+  getIfProfileAdmin,
+  getIfProfileLoaded
+} from '../../../store/firebase/profileSelectors'
 
-const LoginComponent = ({ firebase, ...rest }) => {
-  console.log(rest)
+const LoginComponent = ({
+  authExists,
+  firebase,
+  authLoaded,
+  profileLoaded,
+  location,
+  history,
+  ...rest
+}) => {
+  if (!authLoaded || !profileLoaded) {
+    return <Loading />
+  }
+
+  const { from } = location.state || { from: { pathname: '/' } }
+  if (authExists) {
+    return <Redirect to={from} />
+  }
+
   return (
-    <div>
+    <div className={style.container}>
+      <h1>Login Page</h1>
+      <p>To use this app you have to login first</p>
       <LoginForm form="login" {...{ validate, firebase }} onSubmit={submit} />
     </div>
   )
 }
 
 LoginComponent.propTypes = {
-  firebase: PropTypes.object
+  authExists: PropTypes.bool,
+  authLoaded: PropTypes.bool,
+  firebase: PropTypes.object,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  profileAdmin: PropTypes.bool,
+  profileLoaded: PropTypes.bool
 }
 
-export const Login = withFirebase(LoginComponent)
+const mapStateToProps = state => ({
+  authExists: getIfAuthorized(state),
+  authLoaded: getIfAuthLoaded(state),
+  profileAdmin: getIfProfileAdmin(state),
+  profileLoaded: getIfProfileLoaded(state)
+})
+
+export const Login = withFirebase(connect(mapStateToProps)(LoginComponent))

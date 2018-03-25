@@ -7,7 +7,7 @@ import { Dashboard } from '../Routes/Dashboard/Dashboard'
 import { NotFound } from '../Routes/NotFound/NotFound'
 import { Restricted } from '../Routes/Restricted/Restricted'
 import { Home } from '../Routes/Home/Home'
-import { PrivateRoute } from './PrivateRoute/PrivateRoute'
+import { PrivateRoute } from '../Blocks/PrivateRoute/PrivateRoute'
 
 export const App = () => (
   <div className={style.container}>

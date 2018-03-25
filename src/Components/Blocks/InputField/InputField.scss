@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: {
+    bottom: $padding-single;
+    top: $padding-single;
+  }
+}
+
+.input {
+  @include text-typography;
+  background-color: $app-white;
+  border: 2px $app-gray solid;
+  border-radius: $border-radius;
+  color: $app-black;
+  font-family: $font-body;
+  padding: {
+    bottom: $padding-single;
+    left: $padding-half;
+    right: $padding-half;
+    top: $padding-single;
+  }
+  width: 100%;
+}
+
+.inputError {
+  background-color: lighten($app-red, 35%);
+  border: 2px $app-red solid;
+}
+
+.labels {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin-bottom: 4px;
+
+  label {
+    flex: none;
+    margin: {
+      right: auto;
+    }
+    padding: {
+      top: 6px;
+    }
+  }
+}
+
+.error {
+  color: $app-red;
+}

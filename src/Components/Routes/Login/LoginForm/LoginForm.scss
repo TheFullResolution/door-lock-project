@@ -1,0 +1,61 @@
+.form {
+  border: 1px solid $app-gray;
+  border-radius: $border-radius;
+  margin: {
+    left: auto;
+    right: auto;
+    top: $padding-double;
+  }
+  max-width: 500px;
+  padding: $padding-double;
+}
+
+.navigation {
+  @include mobile-small {
+    flex-direction: column;
+  }
+  display: flex;
+  justify-content: center;
+  margin: {
+    bottom: $padding-single;
+    top: $padding-double;
+  }
+
+  button {
+    display: inline-block;
+    min-width: 150px;
+  }
+
+  .submit {
+    @include mobile-small {
+      margin: {
+        bottom: $padding-single;
+        right: 0;
+      }
+    }
+    background-color: $app-green;
+    margin-right: $padding-single;
+  }
+
+  .clear {
+    background-color: $app-red;
+  }
+}
+
+.message {
+  i {
+    color: $app-red;
+    margin: {
+      bottom: $padding-single;
+      top: $padding-single;
+    }
+  }
+
+  p {
+    color: $app-red;
+    margin: {
+      bottom: $padding-single;
+      top: 0;
+    }
+  }
+}

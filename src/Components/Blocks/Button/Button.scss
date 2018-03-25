@@ -1,0 +1,14 @@
+.button {
+  @include text-typography;
+  border: none;
+  border-radius: $border-radius;
+  color: $app-black;
+  cursor: pointer;
+  font: inherit;
+  padding: {
+    bottom: $padding-half;
+    left: $padding-single;
+    right: $padding-single;
+    top: $padding-half;
+  }
+}
