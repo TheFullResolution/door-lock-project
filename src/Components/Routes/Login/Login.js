@@ -27,10 +27,6 @@ const LoginComponent = ({
   history,
   ...rest
 }) => {
-  if (!authLoaded || !profileLoaded) {
-    return <Loading />
-  }
-
   const { from } = location.state || { from: { pathname: '/' } }
   if (authExists) {
     return <Redirect to={from} />
@@ -40,7 +36,11 @@ const LoginComponent = ({
     <div className={style.container}>
       <h1>Login Page</h1>
       <p>To use this app you have to login first</p>
-      <LoginForm form="login" {...{ validate, firebase }} onSubmit={submit} />
+      {!authLoaded || !profileLoaded ? (
+        <Loading />
+      ) : (
+        <LoginForm form="login" {...{ validate, firebase }} onSubmit={submit} />
+      )}
     </div>
   )
 }
