@@ -10,6 +10,10 @@ export const getIfProfileLoaded = createSelector(
 
 export const getIfProfileAdmin = createSelector(
   getProfile,
-  getIfProfileLoaded,
   profile => profile.roles && profile.roles.admin
+)
+
+export const getProfileBusinesses = createSelector(
+  getProfile,
+  profile => profile.businesses
 )

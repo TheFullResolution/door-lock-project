@@ -1,0 +1,46 @@
+.container {
+  border-bottom: 1px solid $app-gray;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: $max-width;
+  padding: {
+    bottom: $padding-single;
+    left: $padding-container;
+    right: $padding-container;
+    top: $padding-half;
+  }
+
+  h1 {
+    @include heading-typography;
+    color: $app-green;
+    margin: {
+      bottom: $padding-single;
+      right: auto;
+      top: $padding-single;
+    }
+  }
+
+  nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: $app-gray;
+      margin-right: $padding-single;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.button {
+  @include colorise-btn($app-red);
+}

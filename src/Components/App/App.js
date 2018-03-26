@@ -8,10 +8,11 @@ import { NotFound } from '../Routes/NotFound/NotFound'
 import { Restricted } from '../Routes/Restricted/Restricted'
 import { Home } from '../Routes/Home/Home'
 import { PrivateRoute } from '../Blocks/PrivateRoute/PrivateRoute'
+import {Header} from "../Blocks/Header/HeaderComponent";
 
 export const App = () => (
   <div className={style.container}>
-    <h1>YOLO</h1>
+    <Header />
 
     <Switch>
       <Route path="/login" component={Login} />

@@ -6,18 +6,29 @@ import { Link } from 'react-router-dom'
 import { combineClassName } from '../../../helpers/classAndIds'
 
 export const Button = ({ version, children, className, ...rest }) => {
-  if (version === 'button')
+  if (version === 'button') {
     return (
       <button {...rest} className={combineClassName(style.button, className)}>
         {children}
       </button>
     )
-  if (version === 'link')
+  }
+  if (version === 'link') {
     return (
       <Link {...rest} className={combineClassName(style.button, className)}>
         {children}
       </Link>
     )
+  }
+  if (version === 'input') {
+    return (
+      <input
+        type="button"
+        {...rest}
+        className={combineClassName(style.button, className)}
+      />
+    )
+  }
   return null
 }
 

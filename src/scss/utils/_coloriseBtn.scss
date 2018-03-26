@@ -1,0 +1,21 @@
+@mixin colorise-btn($color) {
+  background-color: $color;
+  transition: background-color 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &[disabled],
+  &.disabled {
+    &,
+    &:hover {
+      background-color: lighten($color, 15%);
+    }
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:active {
+    background-color: darken($color, 15%);
+  }
+}

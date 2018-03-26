@@ -33,12 +33,12 @@
         right: 0;
       }
     }
-    background-color: $app-green;
+    @include colorise-btn($app-green);
     margin-right: $padding-single;
   }
 
   .clear {
-    background-color: $app-red;
+    @include colorise-btn($app-red);
   }
 }
 

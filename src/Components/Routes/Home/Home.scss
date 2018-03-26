@@ -1,0 +1,65 @@
+.container {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: $max-width;
+  padding: {
+    bottom: $padding-single;
+    left: $padding-container;
+    right: $padding-container;
+    top: $padding-double;
+  }
+}
+
+.heading {
+  @include heading-typography;
+  margin: {
+    bottom: $padding-double;
+    top: $padding-single;
+  }
+}
+
+.shopHeading {
+  @include heading-typography(h2, $app-gray);
+  margin: {
+    bottom: $padding-double;
+    top: $padding-double;
+  }
+  text-align: center;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.lock {
+  align-items: center;
+  border: 1px solid $app-gray;
+  border-radius: $border-radius;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: {
+    bottom: $padding-single;
+    left: auto;
+    right: auto;
+    top: $padding-single;
+  }
+  max-width: $max-width / 2;
+  padding: $padding-single;
+
+  label {
+    i {
+      margin-right: $padding-half;
+    }
+  }
+}
+
+.button {
+  @include colorise-btn($app-green);
+
+  i {
+    margin-right: $padding-half;
+  }
+}
