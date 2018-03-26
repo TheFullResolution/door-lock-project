@@ -1,0 +1,8 @@
+.button {
+  @include colorise-btn($app-green);
+  min-width: 145px;
+
+  i {
+    margin-right: $padding-half;
+  }
+}

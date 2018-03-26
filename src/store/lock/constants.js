@@ -1,0 +1,5 @@
+export const START_OPENING = 'START_OPENING'
+export const OPEN_ALLOWED = 'OPEN_ALLOWED'
+export const OPEN_NOT_AUTH = 'OPEN_NOT_AUTH'
+export const ADD_LOCK = 'ADD_LOCK'
+export const RESET_LOCK = 'RESET_LOCK'

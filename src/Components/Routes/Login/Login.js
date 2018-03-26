@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Loading } from '../../Blocks/Loading/Loading'
 import {
-  getIfAuthorized,
+  getAuthUid,
   getIfAuthLoaded
 } from '../../../store/firebase/authSelectors'
 import {
@@ -56,7 +56,7 @@ LoginComponent.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  authExists: getIfAuthorized(state),
+  authExists: getAuthUid(state),
   authLoaded: getIfAuthLoaded(state),
   profileAdmin: getIfProfileAdmin(state),
   profileLoaded: getIfProfileLoaded(state)

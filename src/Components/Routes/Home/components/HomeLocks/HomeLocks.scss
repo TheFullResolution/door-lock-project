@@ -8,14 +8,14 @@
     bottom: $padding-single;
     left: $padding-container;
     right: $padding-container;
-    top: $padding-double;
+    top: $padding-single;
   }
 }
 
 .heading {
   @include heading-typography;
   margin: {
-    bottom: $padding-double;
+    bottom: 2 * $padding-double;
     top: $padding-single;
   }
 }
@@ -34,12 +34,8 @@
 }
 
 .lock {
-  align-items: center;
   border: 1px solid $app-gray;
   border-radius: $border-radius;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   margin: {
     bottom: $padding-single;
     left: auto;
@@ -54,12 +50,11 @@
       margin-right: $padding-half;
     }
   }
-}
 
-.button {
-  @include colorise-btn($app-green);
-
-  i {
-    margin-right: $padding-half;
+  .row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }

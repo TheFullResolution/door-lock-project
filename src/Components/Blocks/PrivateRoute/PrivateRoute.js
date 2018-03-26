@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Route, Redirect, withRouter } from 'react-router-dom'
 import { Loading } from '../../Blocks/Loading/Loading'
 import {
-  getIfAuthorized,
+  getAuthUid,
   getIfAuthLoaded
 } from '../../../store/firebase/authSelectors'
 import {
@@ -76,7 +76,7 @@ export class PrivateRouteComponent extends Component {
 }
 
 const mapStateToProps = state => ({
-  authExists: getIfAuthorized(state),
+  authExists: !!getAuthUid(state),
   authLoaded: getIfAuthLoaded(state),
   profileAdmin: getIfProfileAdmin(state),
   profileLoaded: getIfProfileLoaded(state)

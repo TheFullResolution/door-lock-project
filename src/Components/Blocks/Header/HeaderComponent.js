@@ -2,7 +2,7 @@ import * as style from './Header.scss'
 
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { getIfAuthorized } from '../../../store/firebase/authSelectors'
+import { getAuthUid } from '../../../store/firebase/authSelectors'
 import { getIfProfileAdmin } from '../../../store/firebase/profileSelectors'
 import { withFirebase } from 'react-redux-firebase'
 import { connect } from 'react-redux'
@@ -40,7 +40,7 @@ HeaderComponent.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  authExists: getIfAuthorized(state),
+  authExists: !!getAuthUid(state),
   profileAdmin: getIfProfileAdmin(state)
 })
 

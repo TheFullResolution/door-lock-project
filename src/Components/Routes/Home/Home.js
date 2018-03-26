@@ -1,52 +1,44 @@
-import * as style from './Home.scss'
-
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { withFirebase } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { getUsersBusinesses } from '../../../store/firebase/dataSelectors'
-import { Button } from '../../Blocks/Button/Button'
+import { HomeLocks } from './components/HomeLocks/HomeLocks'
+import { addLock, resetLock, openLock } from '../../../store/lock/actions'
+import { getLocks } from '../../../store/lock/getLocks'
 
-export const HomeComponent = ({ businesses }) => {
-  return (
-    <div className={style.container}>
-      <h1 className={style.heading}>List of the Locks:</h1>
-      {businesses.map(el => (
-        <Fragment key={el.name}>
-          <h2 className={style.shopHeading}>
-            <i className="fa fa-building-o fa-lg" aria-hidden="true" />
-            {el.name}
-          </h2>
-          {Object.keys(el.doors).map(key => (
-            <div key={key} className={style.lock}>
-              <label htmlFor={key}>
-                <i className="fa fa-lock fa-lg" aria-hidden="true" />
-                {el.doors[key].name}
-              </label>
-              <Button
-                className={style.button}
-                version="button"
-                id={key}
-                type="button"
-              >
-                <i className="fa fa-unlock-alt fa-lg" aria-hidden="true" />
-                open
-              </Button>
-            </div>
-          ))}
-        </Fragment>
-      ))}
-    </div>
-  )
-}
+export class HomeComponent extends React.Component {
+  timeout = null
 
-HomeComponent.propTypes = {
-  firebase: PropTypes.object,
-  businesses: PropTypes.array
+  static propTypes = {
+    businesses: PropTypes.array,
+    locks: PropTypes.object,
+    addLock: PropTypes.func,
+    resetLock: PropTypes.func,
+    openLock: PropTypes.func
+  }
+
+  componentDidMount() {
+    this.props.businesses.forEach(el => {
+      Object.keys(el.doors).forEach(key => {
+        this.props.addLock(key)
+      })
+    })
+  }
+  render() {
+    const { businesses, locks, openLock } = this.props
+    return <HomeLocks {...{ businesses, locks, openLock }} />
+  }
 }
 
 const mapStateToProps = state => ({
+  locks: getLocks(state),
   businesses: getUsersBusinesses(state)
 })
 
-export const Home = withFirebase(connect(mapStateToProps)(HomeComponent))
+const mapDispatchToProps = dispatch => ({
+  openLock: lock => dispatch(openLock(lock)),
+  resetLock: key => dispatch(resetLock(key)),
+  addLock: key => dispatch(addLock(key))
+})
+
+export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent)

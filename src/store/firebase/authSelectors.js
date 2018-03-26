@@ -5,4 +5,4 @@ export const getAuth = createSelector(getFirebase, ({ auth }) => auth)
 
 export const getIfAuthLoaded = createSelector(getAuth, auth => auth.isLoaded)
 
-export const getIfAuthorized = createSelector(getAuth, auth => !!auth.uid)
+export const getAuthUid = createSelector(getAuth, auth => auth.uid)

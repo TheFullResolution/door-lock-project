@@ -6,6 +6,7 @@ import {
   getFirebase,
   firebaseReducer
 } from 'react-redux-firebase'
+import lockReducer from './lock/reducer'
 import { reducer as formReducer } from 'redux-form'
 import firebase from 'firebase'
 
@@ -27,6 +28,7 @@ firebase.initializeApp(firebaseConfig)
 
 const rootReducer = combineReducers({
   form: formReducer,
+  locks: lockReducer,
   firebase: firebaseReducer
 })
 
