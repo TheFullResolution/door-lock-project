@@ -22,15 +22,14 @@
   }
 }
 
-.seeAll {
+.linkBack {
   @include colorise-btn($app-green);
-  @include heading-typography(h3, $app-black);
   display: block;
   margin: {
     bottom: $padding-double;
     left: auto;
     right: auto;
-    top: $padding-single;
+    top: $padding-double;
   }
   width: 200px;
 }

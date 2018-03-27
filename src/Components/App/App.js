@@ -8,7 +8,8 @@ import { NotFound } from '../Routes/NotFound/NotFound'
 import { Restricted } from '../Routes/Restricted/Restricted'
 import { Home } from '../Routes/Home/Home'
 import { PrivateRoute } from '../Blocks/PrivateRoute/PrivateRoute'
-import {Header} from "../Blocks/Header/Header";
+import { Header } from '../Blocks/Header/Header'
+import {Logs} from '../Routes/Logs/Logs'
 
 export const App = () => (
   <div className={style.container}>
@@ -20,6 +21,7 @@ export const App = () => (
 
       <PrivateRoute path="/" component={Home} exact={true} />
       <PrivateRoute path="/dashboard" component={Dashboard} adminOnly={true} />
+      <PrivateRoute path="/logs/:id" component={Logs} adminOnly={true} />
 
       <Route component={NotFound} />
     </Switch>

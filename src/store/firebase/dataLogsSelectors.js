@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect'
 import reduce from 'lodash-es/reduce'
 import map from 'lodash-es/map'
+import sortBy from 'lodash-es/sortBy'
+import slice from 'lodash-es/slice'
 import { getData, getUsers } from './dataSelectors'
 
 export const getLogs = createSelector(getData, ({ logs }) => logs)
@@ -16,7 +18,7 @@ const logsReduce = (data, data2, fn) =>
   )
 
 const logsBusinessMap = (data, users) =>
-  map(data, (log, id) => ({
+  map(logSortByTimeDesc(data), (log, id) => ({
     ...log,
     id,
     username: users[log.user]
@@ -24,9 +26,15 @@ const logsBusinessMap = (data, users) =>
       : ''
   }))
 
+const logSortByTimeDesc = data => sortBy(data, o => o.timestamp).reverse()
+
 export const getLogsWithUserName = createSelector(
   getLogs,
   getUsers,
-  (logs, users) =>
-    logs && users ? logsReduce(logs, users, logsBusinessMap) : null
+  (logs, users) => logs && users && logsReduce(logs, users, logsBusinessMap)
 )
+
+export const makeGetLogsByIDwithLimit = (id, limit) =>
+  createSelector(getLogsWithUserName, logs => {
+    if (logs && logs[id]) return limit ? slice(logs[id], 0, limit) : logs[id]
+  })

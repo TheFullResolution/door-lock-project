@@ -1,10 +1,11 @@
 import * as style from './Dashboard.scss'
 
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getUsersBusinesses } from '../../../store/firebase/dataSelectors'
-import { DashboardBusiness } from './components/DashboardBusiness/DashboardBusiness'
+import { getUsersBusinesses } from '../../../store/firebase/dataBusinessesSelectors'
+import { LogsTable } from '../../Blocks/LogsTable/LogsTable'
+import { Button } from '../../Blocks/Button/Button'
 
 class DashboardComponent extends Component {
   render() {
@@ -12,11 +13,18 @@ class DashboardComponent extends Component {
     return (
       <div className={style.container}>
         <h1>Dashboard</h1>
-        <div>
-          {businesses.map(el => (
-            <DashboardBusiness key={el.id} business={el} />
-          ))}
-        </div>
+        {businesses.map(el => (
+          <Fragment key={el.id}>
+            <LogsTable business={el} limit={5} />
+            <Button
+              version={'link'}
+              to={`logs/${el.id}`}
+              className={style.seeAll}
+            >
+              See all Logs
+            </Button>
+          </Fragment>
+        ))}
       </div>
     )
   }

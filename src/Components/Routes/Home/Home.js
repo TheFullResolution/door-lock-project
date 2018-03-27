@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getUsersBusinesses } from '../../../store/firebase/dataSelectors'
+import { getUsersBusinesses } from '../../../store/firebase/dataBusinessesSelectors'
 import { HomeLocks } from './components/HomeLocks/HomeLocks'
 import { addLock, resetLock, openLock } from '../../../store/lock/actions'
 import { getLocks } from '../../../store/lock/getLocks'
