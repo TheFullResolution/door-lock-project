@@ -17,3 +17,5 @@ export const getProfileBusinesses = createSelector(
   getProfile,
   profile => profile.businesses
 )
+
+export  const getProfileName = createSelector(getProfile, profile => profile.name)

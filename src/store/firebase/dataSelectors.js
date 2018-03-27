@@ -9,9 +9,13 @@ export const getBusinesses = createSelector(
   ({ businesses }) => businesses
 )
 
+export const getUsers = createSelector(getData, ({ users }) => users)
+
 export const getUsersBusinesses = createSelector(
   getBusinesses,
   getProfileBusinesses,
   (businesses, userBusinesses) =>
-    userBusinesses ? userBusinesses.map(id => ({ ...businesses[id], id })) : []
+    userBusinesses && businesses
+      ? userBusinesses.map(id => ({ ...businesses[id], id }))
+      : []
 )

@@ -1,8 +1,5 @@
 .container {
   border-bottom: 1px solid $app-gray;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
   margin: {
     left: auto;
     right: auto;
@@ -41,6 +38,16 @@
   }
 }
 
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .button {
   @include colorise-btn($app-red);
+}
+
+.greeting {
+  text-align: center;
 }

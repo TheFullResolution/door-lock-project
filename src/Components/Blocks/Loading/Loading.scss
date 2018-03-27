@@ -15,12 +15,15 @@
   }
 
   i {
-    color: $app-green;
     margin: {
       bottom: $padding-double;
       top: $padding-double;
     }
   }
+}
+
+.loader {
+  color: $app-green;
 }
 
 .loading {

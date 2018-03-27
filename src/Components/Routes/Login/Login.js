@@ -56,7 +56,7 @@ LoginComponent.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  authExists: getAuthUid(state),
+  authExists: !!getAuthUid(state),
   authLoaded: getIfAuthLoaded(state),
   profileAdmin: getIfProfileAdmin(state),
   profileLoaded: getIfProfileLoaded(state)
