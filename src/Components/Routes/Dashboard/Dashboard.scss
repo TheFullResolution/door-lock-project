@@ -1,0 +1,23 @@
+.container {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: $max-width;
+  padding: {
+    bottom: $padding-single;
+    top: $padding-single;
+  }
+
+  h1 {
+    @include heading-typography;
+    margin: {
+      bottom: $padding-double;
+      top: $padding-single;
+    }
+    padding: {
+      left: $padding-container;
+      right: $padding-container;
+    }
+  }
+}

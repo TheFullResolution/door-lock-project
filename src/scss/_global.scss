@@ -17,15 +17,16 @@
 }
 /* sass-lint:enable no-universal-selectors force-pseudo-nesting*/
 
-body {
-  @include text-typography;
-  background-color: $app-blue;
-  font-family: $font-body;
-}
-
 %margin-padding {
   margin: 0;
   padding: 0;
+}
+
+body {
+  @extend %margin-padding;
+  @include text-typography;
+  background-color: $app-blue;
+  font-family: $font-body;
 }
 
 h1,

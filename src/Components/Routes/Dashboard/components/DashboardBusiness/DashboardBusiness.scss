@@ -1,0 +1,63 @@
+.shopHeading {
+  @include heading-typography(h2, $app-gray);
+  margin: {
+    bottom: $padding-double;
+    top: $padding-double;
+  }
+  text-align: center;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.logsHeading {
+  @include heading-typography(h3, $app-black);
+  margin: {
+    bottom: $padding-double;
+    top: 0;
+  }
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.tableContainer {
+  @include mobile-small {
+    border-radius: 0;
+  }
+  background-color: $app-white;
+  border-radius: $border-radius;
+  color: $app-black;
+  padding: {
+    bottom: $padding-double;
+    left: $padding-container;
+    right: $padding-container;
+    top: $padding-double;
+  }
+  text-align: center;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left: $padding-half;
+    right: $padding-half;
+  }
+
+  th,
+  td,
+  tr {
+    border: 1px solid $app-black;
+    padding: $padding-half;
+  }
+}

@@ -49,5 +49,8 @@
 }
 
 .greeting {
+  margin: {
+    top: $padding-single;
+  }
   text-align: center;
 }

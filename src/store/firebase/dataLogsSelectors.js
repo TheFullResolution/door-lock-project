@@ -19,7 +19,9 @@ const logsBusinessMap = (data, users) =>
   map(data, (log, id) => ({
     ...log,
     id,
-    username: `${users[log.user].name} ${users[log.user].lastname}`
+    username: users[log.user]
+      ? `${users[log.user].name} ${users[log.user].lastname}`
+      : ''
   }))
 
 export const getLogsWithUserName = createSelector(

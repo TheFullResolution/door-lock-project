@@ -1,6 +1,6 @@
 import * as style from './Dashboard.scss'
 
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getUsersBusinesses } from '../../../store/firebase/dataSelectors'
@@ -10,7 +10,7 @@ class DashboardComponent extends Component {
   render() {
     const { businesses } = this.props
     return (
-      <div>
+      <div className={style.container}>
         <h1>Dashboard</h1>
         <div>
           {businesses.map(el => (
