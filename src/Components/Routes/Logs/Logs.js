@@ -7,9 +7,11 @@ import { makeGetBusinessByID } from '../../../store/firebase/dataBusinessesSelec
 import { LogsTable } from '../../Blocks/LogsTable/LogsTable'
 import { Button } from '../../Blocks/Button/Button'
 
-export const LogsComponent = ({ business, ...props }) => (
+export const LogsComponent = ({ business }) => (
   <div className={style.container}>
-    <h1>All Logs</h1>
+    <h1>
+      All Logs of <span className={style.name}>{business.name}</span>
+    </h1>
     {business && <LogsTable business={business} />}
     <Button version={'link'} to={'/dashboard'} className={style.linkBack}>
       Go Back to Dashboard

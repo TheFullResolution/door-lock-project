@@ -1,14 +1,6 @@
-.shopHeading {
-  @include heading-typography(h2, $app-gray);
-  margin: {
-    bottom: $padding-double;
-    top: $padding-double;
-  }
-  text-align: center;
-
-  i {
-    margin-right: $padding-half;
-  }
+.flex {
+  display: flex;
+  justify-content: center;
 }
 
 .logsHeading {

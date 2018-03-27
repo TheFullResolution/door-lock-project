@@ -30,7 +30,7 @@ export const HeaderComponent = ({
             {profileAdmin && (
               <Fragment>
                 <Link to="/">home</Link>
-                <Link to="dashboard">dashboard</Link>
+                <Link to="/dashboard">dashboard</Link>
               </Fragment>
             )}
             <Button className={style.button} version="button" onClick={onClick}>

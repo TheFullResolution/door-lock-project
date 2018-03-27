@@ -50,6 +50,7 @@
     "react-redux": "5.0.7",
     "react-redux-firebase": "2.0.5",
     "react-router-dom": "4.2.2",
+    "react-toggled": "^1.2.6",
     "redux": "3.7.2",
     "redux-devtools-extension": "2.13.2",
     "redux-form": "7.3.0",

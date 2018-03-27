@@ -1,20 +1,16 @@
 import * as style from './LogsTable.scss'
 
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { firebaseConnect } from 'react-redux-firebase'
+import { firebaseConnect, populate } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { formatDate } from '../../../helpers/formatDate'
 import { LoadingSmall } from '../Loading/LoadingSmall'
-import { makeGetLogsByIDwithLimit } from '../../../store/firebase/dataLogsSelectors'
+import slice from 'lodash-es/slice'
 
-const LogsTableComponent = ({ business, logs, ...rest }) => (
-  <Fragment>
-    <h2 className={style.shopHeading}>
-      <i className="fa fa-building-o fa-lg" aria-hidden="true" />
-      {business.name}
-    </h2>
+const LogsTableComponent = ({ business, logs }) => (
+  <div className={style.flex}>
     <div className={style.tableContainer}>
       <h3 className={style.logsHeading}>
         <i className="fa fa-cloud" aria-hidden="true" />Logs (latest):
@@ -30,11 +26,11 @@ const LogsTableComponent = ({ business, logs, ...rest }) => (
                 <th>User</th>
               </tr>
               {logs.map(item => (
-                <tr key={item.id}>
+                <tr key={item.timestamp}>
                   <td>{business.doors[item.door].name}</td>
                   <td>{item.event}</td>
                   <td>{formatDate(item.timestamp)}</td>
-                  <td>{item.username}</td>
+                  <td>{`${item.user.name} ${item.user.lastname}`}</td>
                 </tr>
               ))}
             </tbody>
@@ -44,7 +40,7 @@ const LogsTableComponent = ({ business, logs, ...rest }) => (
         <LoadingSmall />
       )}
     </div>
-  </Fragment>
+  </div>
 )
 
 LogsTableComponent.propTypes = {
@@ -52,9 +48,7 @@ LogsTableComponent.propTypes = {
   logs: PropTypes.any
 }
 
-const populates = [
-  { child: 'user', root: 'users' } // replace owner with user object
-]
+const populates = [{ child: 'user', root: 'users' }]
 
 const firebaseCall = props => [
   {
@@ -63,13 +57,22 @@ const firebaseCall = props => [
   }
 ]
 
-const mapStateToProps = (state, props) => ({
-  logs: makeGetLogsByIDwithLimit(props.business.id, props.limit && props.limit)(
-    state
-  )
+const mapStateToProps = ({ firebase }, { business }) => ({
+  logs: populate(firebase, `logs/${business.id}`, populates)
 })
+
+const transformLogs = (logs, limit) =>
+  limit ? slice(Object.values(logs), 0, limit) : Object.values(logs)
+
+const mapMergeToProps = ({ logs }, dispatch, { limit, business }) => {
+  const limitedLogs = logs && transformLogs(logs, limit)
+  return {
+    business,
+    logs: limitedLogs && limitedLogs
+  }
+}
 
 export const LogsTable = compose(
   firebaseConnect(firebaseCall),
-  connect(mapStateToProps)
+  connect(mapStateToProps, null, mapMergeToProps)
 )(LogsTableComponent)

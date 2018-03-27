@@ -22,7 +22,20 @@
   }
 }
 
-.seeAll {
+.shopHeading {
+  @include heading-typography(h2, $app-gray);
+  margin: {
+    bottom: $padding-double;
+    top: $padding-double;
+  }
+  text-align: center;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.button {
   @include colorise-btn($app-green);
   @include heading-typography(h3, $app-black);
   display: block;
@@ -33,4 +46,8 @@
     top: $padding-single;
   }
   width: 200px;
+
+  i {
+    margin-left: $padding-half;
+  }
 }
