@@ -5,11 +5,16 @@ import PropTypes from 'prop-types'
 import { LoadingSmall } from '../../../../../Blocks/Loading/LoadingSmall'
 import { Button } from '../../../../../Blocks/Button/Button'
 
-export const EmployeesAddResults = ({ addUser, loading, users }) => (
+export const EmployeesAddResults = ({ addUser, error, loading, users }) => (
   <div className={style.results}>
     <h3>Results</h3>
     {loading ? (
       <LoadingSmall />
+    ) : error ? (
+      <div className={style.error}>
+        <i className="fa fa-exclamation fa-2x" aria-hidden="true" />
+        <p>{error}</p>
+      </div>
     ) : (
       <ul className={style.list}>
         {users ? (
@@ -46,6 +51,7 @@ export const EmployeesAddResults = ({ addUser, loading, users }) => (
 
 EmployeesAddResults.propTypes = {
   addUser: PropTypes.func,
+  error: PropTypes.string,
   loading: PropTypes.bool,
   users: PropTypes.object
 }

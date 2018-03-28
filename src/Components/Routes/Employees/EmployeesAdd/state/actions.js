@@ -1,8 +1,8 @@
-import { SET_USERS, CLEAN_USERS, SET_ERROR, START_LOADING } from './constants'
+import { SET_USERS, CLEAN_USERS, SET_ERROR, START_LOADING_ADD } from './constants'
 import { getAuthUid } from '../../../../../store/firebase/authSelectors'
 
 export const searchUsers = email => async (dispatch, getState, getFirebase) => {
-  dispatch({ type: START_LOADING, payload: null })
+  dispatch({ type: START_LOADING_ADD, payload: null })
 
   const firebase = getFirebase()
 
@@ -23,7 +23,7 @@ export const addUser = (id, businessId) => async (
   getState,
   getFirebase
 ) => {
-  dispatch({ type: START_LOADING, payload: null })
+  dispatch({ type: START_LOADING_ADD, payload: null })
 
   const uid = getAuthUid(getState())
 

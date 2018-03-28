@@ -1,5 +1,10 @@
 import update from 'immutability-helper'
-import { SET_USERS, CLEAN_USERS, START_LOADING, SET_ERROR } from './constants'
+import {
+  SET_USERS,
+  CLEAN_USERS,
+  START_LOADING_ADD,
+  SET_ERROR
+} from './constants'
 
 const initialState = {
   loading: false,
@@ -9,7 +14,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case START_LOADING:
+    case START_LOADING_ADD:
       return update(state, {
         loading: { $set: true },
         error: { $set: null }
@@ -26,7 +31,8 @@ const reducer = (state = initialState, action) => {
       })
     case SET_ERROR:
       return update(state, {
-        error: { $set: action.payload }
+        error: { $set: action.payload },
+        loading: { $set: false }
       })
     default:
       return state

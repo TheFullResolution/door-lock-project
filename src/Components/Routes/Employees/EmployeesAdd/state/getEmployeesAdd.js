@@ -11,3 +11,8 @@ export const getEmployeesAddLoading = createSelector(
   getEmployeesAdd,
   employeesAdd => employeesAdd.loading
 )
+
+export const getEmployeesAddError = createSelector(
+  getEmployeesAdd,
+  employeesAdd => employeesAdd.error
+)

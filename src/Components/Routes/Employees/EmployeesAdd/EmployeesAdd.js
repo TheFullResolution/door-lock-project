@@ -7,27 +7,30 @@ import { validate } from './methods/validate'
 import { submit } from './methods/submit'
 import { connect } from 'react-redux'
 import {
+  getEmployeesAddError,
   getEmployeesAddLoading,
   getEmployeesAddUsers
 } from './state/getEmployeesAdd'
 import { EmployeesAddResults } from './components/EmployeesAddResults/EmployeesAddResults'
 import { addUser } from './state/actions'
 
-export const EmployeesAddComponent = ({ loading, users, addUser }) => (
+export const EmployeesAddComponent = ({ error, loading, users, addUser }) => (
   <div className={style.container}>
     <EmployeesAddForm form="employeadd" {...{ validate }} onSubmit={submit} />
-    <EmployeesAddResults {...{ addUser, loading, users }} />
+    <EmployeesAddResults {...{ addUser, error, loading, users }} />
   </div>
 )
 
 EmployeesAddComponent.propTypes = {
   addUser: PropTypes.func,
   businessId: PropTypes.string,
+  error: PropTypes.string,
   loading: PropTypes.bool,
   users: PropTypes.object
 }
 
 const mapStateToProps = state => ({
+  error: getEmployeesAddError(state),
   loading: getEmployeesAddLoading(state),
   users: getEmployeesAddUsers(state)
 })
