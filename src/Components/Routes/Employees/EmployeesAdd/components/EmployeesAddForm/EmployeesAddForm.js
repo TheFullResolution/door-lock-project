@@ -3,8 +3,8 @@ import * as style from './EmployeesAddForm.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import { Button } from '../../../../Blocks/Button/Button'
-import { InputField } from '../../../../Blocks/InputField/InputField'
+import { Button } from '../../../../../Blocks/Button/Button'
+import { InputField } from '../../../../../Blocks/InputField/InputField'
 
 export const EmployeesAddFormComponent = props => {
   const { handleSubmit, submitting, error } = props

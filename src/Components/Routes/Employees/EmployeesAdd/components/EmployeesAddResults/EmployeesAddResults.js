@@ -2,8 +2,8 @@ import * as style from './EmployeesAddResults.scss'
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { LoadingSmall } from '../../../../Blocks/Loading/LoadingSmall'
-import { Button } from '../../../../Blocks/Button/Button'
+import { LoadingSmall } from '../../../../../Blocks/Loading/LoadingSmall'
+import { Button } from '../../../../../Blocks/Button/Button'
 
 export const EmployeesAddResults = ({ addUser, loading, users }) => (
   <div className={style.results}>
