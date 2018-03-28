@@ -1,5 +1,23 @@
-.button {
-  @include colorise-btn($app-green);
+.buttonIdle {
+  @include colorise-btn($app-yellow);
+  min-width: 145px;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.buttonOpen {
+  background-color: $app-green;
+  min-width: 145px;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.buttonClose {
+  background-color: $app-red;
   min-width: 145px;
 
   i {

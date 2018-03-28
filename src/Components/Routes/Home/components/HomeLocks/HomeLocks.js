@@ -3,11 +3,14 @@ import * as style from './HomeLocks.scss'
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { HomeButton } from '../HomeButton/HomeButton'
-import {HomeMessage} from "../HomeMessage/HomeMessage";
+import { HomeMessage } from '../HomeMessage/HomeMessage'
 
 export const HomeLocks = ({ businesses, openLock, locks }) => (
   <div className={style.container}>
     <h1 className={style.heading}>List of the Locks:</h1>
+    {businesses.length === 0 && (
+      <p>You are not added to any businesses, contact your manager.</p>
+    )}
     {businesses.map(el => (
       <Fragment key={el.name}>
         <h2 className={style.shopHeading}>
@@ -32,6 +35,7 @@ export const HomeLocks = ({ businesses, openLock, locks }) => (
                     onClick={onClick}
                     id={key}
                     loading={lockState.loading}
+                    access={lockState.access}
                   />
                 )}
               </div>

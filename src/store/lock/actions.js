@@ -7,6 +7,12 @@ import {
 } from './constants'
 import { getAuthUid } from '../firebase/authSelectors'
 
+const simulateRealLifeLock = (dispatch, key) => {
+  setTimeout(() => {
+    dispatch({ type: RESET_LOCK, payload: key })
+  }, 5000)
+}
+
 export const openLock = ({ key, shop }) => async (
   dispatch,
   getState,
@@ -25,8 +31,12 @@ export const openLock = ({ key, shop }) => async (
       })
 
     dispatch({ type: OPEN_ALLOWED, payload: key })
+
+    simulateRealLifeLock(dispatch, key)
   } catch (e) {
     dispatch({ type: OPEN_NOT_AUTH, payload: key })
+
+    simulateRealLifeLock(dispatch, key)
   } finally {
     const uid = getAuthUid(getState())
     const obj = {

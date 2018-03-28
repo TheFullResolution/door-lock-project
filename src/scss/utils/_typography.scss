@@ -38,3 +38,14 @@ $text-size-small: (
   font-family: $font-family;
   line-height: 1.5;
 }
+
+@mixin text-small(
+  $size-table: $text-size-small,
+  $color: $app-white,
+  $font-family: $font-body
+) {
+  @include fluid-sizing('font-size', $size-table);
+  color: $color;
+  font-family: $font-family;
+  line-height: 1.5;
+}

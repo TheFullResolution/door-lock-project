@@ -1,0 +1,5 @@
+.message {
+  @include text-small;
+  color: $app-gray;
+  text-align: center;
+}
