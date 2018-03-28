@@ -1,5 +1,5 @@
 import { SET_USERS, CLEAN_USERS, SET_ERROR, START_LOADING } from './constants'
-import { getAuthUid } from '../../../../../../store/firebase/authSelectors'
+import { getAuthUid } from '../../../../../store/firebase/authSelectors'
 
 export const searchUsers = email => async (dispatch, getState, getFirebase) => {
   dispatch({ type: START_LOADING, payload: null })

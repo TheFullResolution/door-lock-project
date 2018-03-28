@@ -1,0 +1,36 @@
+.employee {
+  border: 1px solid $app-gray;
+  border-radius: $border-radius;
+  margin: {
+    bottom: $padding-single;
+    top: $padding-single;
+  }
+  padding: {
+    bottom: $padding-single;
+    left: $padding-double;
+    right: $padding-double;
+    top: $padding-single;
+  }
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.button {
+  @include colorise-btn($app-green);
+  @include heading-typography(h3, $app-black);
+  display: block;
+  margin: {
+    bottom: $padding-single;
+    top: $padding-single;
+  }
+  width: 200px;
+
+  i {
+    margin-left: $padding-half;
+  }
+}

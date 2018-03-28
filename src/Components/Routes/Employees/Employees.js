@@ -6,10 +6,10 @@ import { firebaseConnect, populate, isLoaded } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Button } from '../../Blocks/Button/Button'
-import { EmployeeDetails } from './components/EmployeeDetails/EmployeeDetails'
 import { Loading } from '../../Blocks/Loading/Loading'
 import { getAuthUid } from '../../../store/firebase/authSelectors'
-import { EmployeesAdd } from './components/EmployeesAdd/EmployeesAdd'
+import { EmployeesAdd } from './EmployeesAdd/EmployeesAdd'
+import { EmployeesManage } from './EmployeesManage/EmployeesManage'
 
 const EmployeesComponent = ({ auth, business, doorsAuth, match }) => {
   if (!isLoaded(business, doorsAuth)) return <Loading />
@@ -22,7 +22,7 @@ const EmployeesComponent = ({ auth, business, doorsAuth, match }) => {
       </h1>
       <ul className={style.list}>
         {Object.keys(employees).map(id => (
-          <EmployeeDetails key={id} {...{ employees, doors, id, doorsAuth }} />
+          <EmployeesManage key={id} {...{ employees, doors, id, doorsAuth }} />
         ))}
       </ul>
       <div>

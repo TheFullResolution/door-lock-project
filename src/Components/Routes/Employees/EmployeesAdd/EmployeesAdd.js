@@ -2,7 +2,7 @@ import * as style from './EmployeesAdd.scss'
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { EmployeesAddForm } from '../EmployeesAddForm/EmployeesAddForm'
+import { EmployeesAddForm } from './components/EmployeesAddForm/EmployeesAddForm'
 import { validate } from './methods/validate'
 import { submit } from './methods/submit'
 import { connect } from 'react-redux'
@@ -10,7 +10,7 @@ import {
   getEmployeesAddLoading,
   getEmployeesAddUsers
 } from './state/getEmployeesAdd'
-import { EmployeesAddResults } from '../EmployeesAddResults/EmployeesAddResults'
+import { EmployeesAddResults } from './components/EmployeesAddResults/EmployeesAddResults'
 import { addUser } from './state/actions'
 
 export const EmployeesAddComponent = ({ loading, users, addUser }) => (

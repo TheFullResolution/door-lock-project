@@ -9,7 +9,7 @@ import {
 import lockReducer from '../Components/Routes/Home/state/reducer'
 import { reducer as formReducer } from 'redux-form'
 import firebase from 'firebase'
-import employeeReducer from '../Components/Routes/Employees/components/EmployeesAdd/state/reducer'
+import employeeReducer from '../Components/Routes/Employees/EmployeesAdd/state/reducer'
 
 // Firebase config
 const firebaseConfig = {
