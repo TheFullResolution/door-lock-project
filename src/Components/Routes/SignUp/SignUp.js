@@ -1,7 +1,7 @@
-import * as style from './Login.scss'
+import * as style from './SignUp.scss'
 
 import React from 'react'
-import { LoginForm } from './LoginForm/LoginForm'
+import { SignUpForm } from './SignUpForm/SignUpForm'
 import PropTypes from 'prop-types'
 import { validate } from './methods/validate'
 import { submit } from './methods/submit'
@@ -17,14 +17,14 @@ import {
   getIfProfileAdmin,
   getIfProfileLoaded
 } from '../../../store/firebase/profileSelectors'
-import {Button} from '../../Blocks/Button/Button'
+import { Button } from '../../Blocks/Button/Button'
 
-const LoginComponent = ({
+const SignUpComponent = ({
   authExists,
   firebase,
   authLoaded,
   profileLoaded,
-  location,
+  location
 }) => {
   const { from } = location.state || { from: { pathname: '/' } }
   if (authExists) {
@@ -33,21 +33,25 @@ const LoginComponent = ({
 
   return (
     <div className={style.container}>
-      <h1>Login Page</h1>
-      <p>To use this app you have to login first</p>
-      <Button version={'link'} to={'/signup'} className={style.link}>
-        Sign up Instead
+      <h1>Sign Up Page</h1>
+      <p>Create account so you manager can add you to the employee list</p>
+      <Button version={'link'} to={'/login'} className={style.link}>
+        Login Instead
       </Button>
       {!authLoaded || !profileLoaded ? (
         <Loading />
       ) : (
-        <LoginForm form="login" {...{ validate, firebase }} onSubmit={submit} />
+        <SignUpForm
+          form="login"
+          {...{ validate, firebase }}
+          onSubmit={submit}
+        />
       )}
     </div>
   )
 }
 
-LoginComponent.propTypes = {
+SignUpComponent.propTypes = {
   authExists: PropTypes.bool,
   authLoaded: PropTypes.bool,
   firebase: PropTypes.object,
@@ -64,4 +68,4 @@ const mapStateToProps = state => ({
   profileLoaded: getIfProfileLoaded(state)
 })
 
-export const Login = withFirebase(connect(mapStateToProps)(LoginComponent))
+export const SignUp = withFirebase(connect(mapStateToProps)(SignUpComponent))

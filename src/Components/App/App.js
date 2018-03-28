@@ -10,7 +10,8 @@ import { Home } from '../Routes/Home/Home'
 import { PrivateRoute } from '../Blocks/PrivateRoute/PrivateRoute'
 import { Header } from '../Blocks/Header/Header'
 import { Logs } from '../Routes/Logs/Logs'
-import {Employees} from '../Routes/Employees/Employees'
+import { Employees } from '../Routes/Employees/Employees'
+import {SignUp} from '../Routes/SignUp/SignUp'
 
 export const App = () => (
   <div className={style.container}>
@@ -18,6 +19,7 @@ export const App = () => (
 
     <Switch>
       <Route path="/login" component={Login} />
+      <Route path="/signup" component={SignUp} />
       <Route path="/restricted" component={Restricted} />
 
       <PrivateRoute path="/" component={Home} exact={true} />

@@ -9,7 +9,7 @@ import { Button } from '../../Blocks/Button/Button'
 import { EmployeeDetails } from './components/EmployeeDetails/EmployeeDetails'
 import { Loading } from '../../Blocks/Loading/Loading'
 
-const EmployeesComponent = ({ business, doorsAuth, ...props }) => {
+const EmployeesComponent = ({ business, doorsAuth }) => {
   if (!isLoaded(business, doorsAuth)) return <Loading />
 
   const { employees, doors } = business
