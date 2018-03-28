@@ -1,0 +1,27 @@
+.container {
+  @include mobile-big {
+    flex-direction: column;
+  }
+  border: 1px solid $app-gray;
+  border-radius: $border-radius;
+  display: flex;
+  margin: {
+    left: auto;
+    right: auto;
+    top: $padding-double;
+  }
+  padding: $padding-double;
+}
+
+.results {
+  @include mobile-big {
+    margin-left: 0;
+  }
+  flex: 1 1 45%;
+  margin-left: $padding-single;
+
+  h3 {
+    @include heading-typography(h3);
+    margin-top: 0;
+  }
+}

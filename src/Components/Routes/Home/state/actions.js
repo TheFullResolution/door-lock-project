@@ -5,7 +5,7 @@ import {
   ADD_LOCK,
   RESET_LOCK
 } from './constants'
-import { getAuthUid } from '../firebase/authSelectors'
+import { getAuthUid } from '../../../../store/firebase/authSelectors'
 
 const simulateRealLifeLock = (dispatch, key) => {
   setTimeout(() => {

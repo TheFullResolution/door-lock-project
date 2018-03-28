@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getUsersBusinesses } from '../../../store/firebase/dataBusinessesSelectors'
 import { HomeLocks } from './components/HomeLocks/HomeLocks'
-import { addLock, resetLock, openLock } from '../../../store/lock/actions'
-import { getLocks } from '../../../store/lock/getLocks'
+import { addLock, resetLock, openLock } from './state/actions'
+import { getLocks } from './state/getLocks'
 
 export class HomeComponent extends React.Component {
-  timeout = null
-
   static propTypes = {
     businesses: PropTypes.array,
     locks: PropTypes.object,

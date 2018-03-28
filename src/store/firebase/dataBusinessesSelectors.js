@@ -11,7 +11,7 @@ export const getUsersBusinesses = createSelector(
   getProfileBusinesses,
   (businesses, userBusinesses) =>
     userBusinesses && businesses
-      ? userBusinesses.map(id => ({ ...businesses[id], id }))
+      ? Object.keys(userBusinesses).map(id => ({ ...businesses[id], id }))
       : []
 )
 

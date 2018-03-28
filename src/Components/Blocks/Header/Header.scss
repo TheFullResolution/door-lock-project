@@ -1,14 +1,8 @@
 .container {
   border-bottom: 1px solid $app-gray;
-  margin: {
-    left: auto;
-    right: auto;
-  }
-  max-width: $max-width;
+
   padding: {
     bottom: $padding-single;
-    left: $padding-container;
-    right: $padding-container;
     top: $padding-half;
   }
 
@@ -42,6 +36,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: $max-width;
+  padding: {
+    left: $padding-container;
+    right: $padding-container;
+  }
 }
 
 .button {

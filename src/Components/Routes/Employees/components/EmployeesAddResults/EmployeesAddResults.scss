@@ -1,0 +1,39 @@
+.results {
+  @include mobile-big {
+    margin-left: 0;
+  }
+  flex: 1 1 45%;
+  margin-left: $padding-single;
+
+  h3 {
+    @include heading-typography(h3);
+    margin-top: 0;
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.noResults {
+  color: $app-gray;
+  font-style: italic;
+}
+
+.result {
+  align-items: center;
+  border: 1px solid $app-gray;
+  border-radius: $border-radius;
+  display: flex;
+  justify-content: space-between;
+  padding: $padding-single;
+}
+
+.button {
+  background-color: $app-green;
+
+  i {
+    margin-right: $padding-half;
+  }
+}

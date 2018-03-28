@@ -1,0 +1,25 @@
+.form {
+  flex: 1 1 45%;
+  max-width: 400px;
+
+  h3 {
+    @include heading-typography(h3);
+    margin-top: 0;
+  }
+}
+
+.submit {
+  @include colorise-btn($app-yellow);
+  display: block;
+  margin: {
+    bottom: $padding-single;
+    left: auto;
+    right: auto;
+    top: $padding-single;
+  }
+  min-width: 145px;
+
+  i {
+    margin-right: $padding-half;
+  }
+}

@@ -42,7 +42,7 @@ const SignUpComponent = ({
         <Loading />
       ) : (
         <SignUpForm
-          form="login"
+          form="signup"
           {...{ validate, firebase }}
           onSubmit={submit}
         />

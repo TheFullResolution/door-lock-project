@@ -6,6 +6,8 @@
   max-width: $max-width;
   padding: {
     bottom: $padding-single;
+    left: $padding-container;
+    right: $padding-container;
     top: $padding-single;
   }
 
@@ -14,10 +16,6 @@
     margin: {
       bottom: $padding-double;
       top: $padding-single;
-    }
-    padding: {
-      left: $padding-container;
-      right: $padding-container;
     }
   }
 }
