@@ -7,11 +7,10 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Button } from '../../Blocks/Button/Button'
 import { Loading } from '../../Blocks/Loading/Loading'
-import { getAuthUid } from '../../../store/firebase/authSelectors'
 import { EmployeesAdd } from './EmployeesAdd/EmployeesAdd'
 import { EmployeesManage } from './EmployeesManage/EmployeesManage'
 
-const EmployeesComponent = ({ auth, business, doorsAuth, match }) => {
+const EmployeesComponent = ({ business, doorsAuth, match }) => {
   if (!isLoaded(business, doorsAuth)) return <Loading />
 
   const { employees, doors } = business
@@ -22,7 +21,11 @@ const EmployeesComponent = ({ auth, business, doorsAuth, match }) => {
       </h1>
       <ul className={style.list}>
         {Object.keys(employees).map(id => (
-          <EmployeesManage key={id} {...{ employees, doors, id, doorsAuth }} />
+          <EmployeesManage
+            key={id}
+            businessId={match.params.id}
+            {...{ employees, doors, id, doorsAuth }}
+          />
         ))}
       </ul>
       <div>
@@ -37,7 +40,6 @@ const EmployeesComponent = ({ auth, business, doorsAuth, match }) => {
 }
 
 EmployeesComponent.propTypes = {
-  auth: PropTypes.string,
   business: PropTypes.object,
   doorsAuth: PropTypes.object,
   match: PropTypes.object
@@ -56,7 +58,6 @@ const firebaseCall = props => [
 ]
 
 const mapStateToProps = (state, props) => ({
-  auth: getAuthUid(state),
   business: populate(
     state.firebase,
     `businesses/${props.match.params.id}`,

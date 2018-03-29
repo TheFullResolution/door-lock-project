@@ -9,7 +9,8 @@ import {
 import lockReducer from '../Components/Routes/Home/state/reducer'
 import { reducer as formReducer } from 'redux-form'
 import firebase from 'firebase'
-import employeeReducer from '../Components/Routes/Employees/EmployeesAdd/state/reducer'
+import employeesAddReducer from '../Components/Routes/Employees/EmployeesAdd/state/reducer'
+import employeesManageReducer from '../Components/Routes/Employees/EmployeesManage/state/reducer'
 
 // Firebase config
 const firebaseConfig = {
@@ -30,7 +31,8 @@ firebase.initializeApp(firebaseConfig)
 const rootReducer = combineReducers({
   form: formReducer,
   locks: lockReducer,
-  employeesAdd: employeeReducer,
+  employeesManage: employeesManageReducer,
+  employeesAdd: employeesAddReducer,
   firebase: firebaseReducer
 })
 

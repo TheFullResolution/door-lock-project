@@ -2,8 +2,7 @@ import * as style from './EmployeesDetails.scss'
 
 import React from 'react'
 import PropTypes from 'prop-types'
-
-const checkAccess = (doorID, doorsAuth, userId) => doorsAuth[doorID][userId]
+import {checkAccess} from '../../methods/checkAccess'
 
 export const EmployeesDetails = ({ employees, id, doorsAuth, doors }) => (
   <div>

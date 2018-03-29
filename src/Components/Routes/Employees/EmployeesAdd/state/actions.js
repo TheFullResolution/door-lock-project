@@ -1,7 +1,7 @@
 import {
   SET_USERS,
   CLEAN_USERS,
-  SET_ERROR,
+  SET_ERROR_ADD,
   START_LOADING_ADD
 } from './constants'
 import { getAuthUid } from '../../../../../store/firebase/authSelectors'
@@ -36,7 +36,7 @@ export const addUser = (id, businessId) => async (
 
   if (uid === id) {
     dispatch({
-      type: SET_ERROR,
+      type: SET_ERROR_ADD,
       payload: 'You can not add yourself, admin has access to all doors'
     })
     return
@@ -77,7 +77,7 @@ export const addUser = (id, businessId) => async (
     }
   } catch (e) {
     dispatch({
-      type: SET_ERROR,
+      type: SET_ERROR_ADD,
       payload: e.message
     })
   }

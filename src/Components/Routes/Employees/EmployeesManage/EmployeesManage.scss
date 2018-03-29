@@ -7,8 +7,6 @@
   }
   padding: {
     bottom: $padding-single;
-    left: $padding-double;
-    right: $padding-double;
     top: $padding-single;
   }
 }
@@ -18,6 +16,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: {
+    left: $padding-double;
+    right: $padding-double;
+  }
 }
 
 .button {

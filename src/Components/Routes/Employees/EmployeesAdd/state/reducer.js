@@ -3,7 +3,7 @@ import {
   SET_USERS,
   CLEAN_USERS,
   START_LOADING_ADD,
-  SET_ERROR
+  SET_ERROR_ADD
 } from './constants'
 
 const initialState = {
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
         users: { $set: action.payload },
         loading: { $set: false }
       })
-    case SET_ERROR:
+    case SET_ERROR_ADD:
       return update(state, {
         error: { $set: action.payload },
         loading: { $set: false }

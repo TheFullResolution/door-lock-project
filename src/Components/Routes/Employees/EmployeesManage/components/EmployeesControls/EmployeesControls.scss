@@ -1,0 +1,38 @@
+.container {
+  border-top: 1px solid $app-gray;
+  margin: {
+    top: $padding-single;
+  }
+  padding: {
+    bottom: $padding-single;
+    top: $padding-double;
+  }
+
+  h3 {
+    @include heading-typography(h3);
+    margin-top: 0;
+  }
+}
+
+.wrapper {
+  padding: {
+    left: $padding-double;
+    right: $padding-double;
+  }
+}
+
+.doors {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin: {
+      bottom: $padding-single;
+      top: $padding-double;
+    }
+  }
+}
+
+.doorsName {
+  @include heading-typography(h4);
+}

@@ -1,0 +1,32 @@
+.removeWrapper {
+  display: flex;
+}
+
+.remove {
+  @include colorise-btn($app-red);
+  margin-left: auto;
+}
+
+.removeContainer {
+  margin: {
+    top: $padding-single;
+  }
+  text-align: center;
+
+  p {
+    margin: {
+      bottom: $padding-single;
+    }
+  }
+}
+
+.finalRemove {
+  @include colorise-btn($app-red);
+
+  i {
+    margin: {
+      left: $padding-half;
+      right: $padding-half;
+    }
+  }
+}
