@@ -14,7 +14,15 @@ export class HomeComponent extends React.Component {
     resetLock: PropTypes.func,
     openLock: PropTypes.func
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.businesses.length !== this.props.businesses.length) {
+      this.props.businesses.forEach(el => {
+        Object.keys(el.doors).forEach(key => {
+          this.props.addLock(key)
+        })
+      })
+    }
+  }
   componentDidMount() {
     this.props.businesses.forEach(el => {
       Object.keys(el.doors).forEach(key => {
