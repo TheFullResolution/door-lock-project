@@ -4,8 +4,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { EmployeesDetails } from './components/EmployeesDetails/EmployeesDetails'
 import Toggle from 'react-toggled'
-import {Button} from '../../../Blocks/Button/Button'
-import {combineClassName} from '../../../../helpers/classAndIds'
+import { Button } from '../../../Blocks/Button/Button'
+import { combineClassName } from '../../../../helpers/classAndIds'
 
 export const EmployeesManage = ({ employees, id, doorsAuth, doors }) => (
   <li className={style.employee}>
@@ -18,7 +18,7 @@ export const EmployeesManage = ({ employees, id, doorsAuth, doors }) => (
             className={style.button}
             {...getTogglerProps()}
           >
-            {on ? 'Edit' : 'Hide'}
+            {on ? 'Hide' : 'Edit'}
             <i
               className={combineClassName(
                 'fa fa-lg',

@@ -14,9 +14,11 @@ import {
 import { EmployeesAddResults } from './components/EmployeesAddResults/EmployeesAddResults'
 import { addUser } from './state/actions'
 
+export const FORM_NAME = "employeeAdd"
+
 export const EmployeesAddComponent = ({ error, loading, users, addUser }) => (
   <div className={style.container}>
-    <EmployeesAddForm form="employeadd" {...{ validate }} onSubmit={submit} />
+    <EmployeesAddForm form={FORM_NAME} {...{ validate }} onSubmit={submit} />
     <EmployeesAddResults {...{ addUser, error, loading, users }} />
   </div>
 )
