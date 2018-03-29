@@ -12,7 +12,6 @@ import {
 import { connect } from 'react-redux'
 import { formatDate } from '../../../helpers/formatDate'
 import { LoadingSmall } from '../Loading/LoadingSmall'
-import slice from 'lodash-es/slice'
 
 const LogsTableComponent = ({ business, logs, isLoaded, isEmpty }) => (
   <div className={style.flex}>
@@ -59,29 +58,37 @@ LogsTableComponent.propTypes = {
 
 const populates = [{ child: 'user', root: 'users' }]
 
-const firebaseCall = props => [
-  {
-    path: `logs/${props.business.id}`,
-    populates
-  }
-]
+const firebaseCall = props =>
+  props.limit
+    ? [
+        {
+          path: `logs/${props.business.id}`,
+          queryParams: ['orderByChild=timestamp', `limitToLast=${props.limit}`],
+          storeAs: `logs${props.limit}/${props.business.id}`,
+          populates
+        }
+      ]
+    : [
+        {
+          path: `logs/${props.business.id}`,
+          queryParams: ['orderByChild=timestamp'],
+          populates
+        }
+      ]
 
-const mapStateToProps = ({ firebase }, { business }) => ({
-  logs: populate(firebase, `logs/${business.id}`, populates)
+const mapStateToProps = ({ firebase }, { business, limit }) =>
+  limit
+    ? {
+        logs: populate(firebase, `logs${limit}/${business.id}`, populates)
+      }
+    : { logs: populate(firebase, `logs/${business.id}`, populates) }
+
+const mapMergeToProps = ({ logs }, dispatch, { business }) => ({
+  business,
+  logs: logs && Object.values(logs).reverse(),
+  isLoaded: isLoaded(logs),
+  isEmpty: isEmpty(logs)
 })
-
-const transformLogs = (logs, limit) =>
-  limit ? slice(Object.values(logs), 0, limit) : Object.values(logs)
-
-const mapMergeToProps = ({ logs }, dispatch, { limit, business }) => {
-  const limitedLogs = logs && transformLogs(logs, limit)
-  return {
-    business,
-    logs: limitedLogs && limitedLogs,
-    isLoaded: isLoaded(logs),
-    isEmpty: isEmpty(logs)
-  }
-}
 
 export const LogsTable = compose(
   firebaseConnect(firebaseCall),
