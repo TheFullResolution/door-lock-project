@@ -1,2 +1,2 @@
 export const checkAccess = (doorID, doorsAuth, userId) =>
-  doorsAuth[doorID][userId]
+  doorsAuth  && doorsAuth[doorID] && doorsAuth[doorID][userId]
