@@ -20,13 +20,14 @@ const EmployeesComponent = ({ business, doorsAuth, match }) => {
         Employees of <span className={style.name}>{business.name}</span>
       </h1>
       <ul className={style.list}>
-        {Object.keys(employees).map(id => (
-          <EmployeesManage
-            key={id}
-            businessId={match.params.id}
-            {...{ employees, doors, id, doorsAuth }}
-          />
-        ))}
+        {employees &&
+          Object.keys(employees).map(id => (
+            <EmployeesManage
+              key={id}
+              businessId={match.params.id}
+              {...{ employees, doors, id, doorsAuth }}
+            />
+          ))}
       </ul>
       <div>
         <h2>Add Employees</h2>

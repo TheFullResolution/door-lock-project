@@ -3,19 +3,28 @@ import * as style from './LogsTable.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { firebaseConnect, populate } from 'react-redux-firebase'
+import {
+  firebaseConnect,
+  populate,
+  isLoaded,
+  isEmpty
+} from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import { formatDate } from '../../../helpers/formatDate'
 import { LoadingSmall } from '../Loading/LoadingSmall'
 import slice from 'lodash-es/slice'
 
-const LogsTableComponent = ({ business, logs }) => (
+const LogsTableComponent = ({ business, logs, isLoaded, isEmpty }) => (
   <div className={style.flex}>
     <div className={style.tableContainer}>
       <h3 className={style.logsHeading}>
         <i className="fa fa-cloud" aria-hidden="true" />Logs (latest):
       </h3>
-      {logs ? (
+      {!isLoaded ? (
+        <LoadingSmall />
+      ) : isEmpty ? (
+        <p>No Logs yet</p>
+      ) : (
         <div className={style.tableWrapper}>
           <table className={style.table}>
             <tbody>
@@ -36,8 +45,6 @@ const LogsTableComponent = ({ business, logs }) => (
             </tbody>
           </table>
         </div>
-      ) : (
-        <LoadingSmall />
       )}
     </div>
   </div>
@@ -45,7 +52,9 @@ const LogsTableComponent = ({ business, logs }) => (
 
 LogsTableComponent.propTypes = {
   business: PropTypes.object,
-  logs: PropTypes.any
+  logs: PropTypes.any,
+  isLoaded: PropTypes.bool,
+  isEmpty: PropTypes.bool
 }
 
 const populates = [{ child: 'user', root: 'users' }]
@@ -68,7 +77,9 @@ const mapMergeToProps = ({ logs }, dispatch, { limit, business }) => {
   const limitedLogs = logs && transformLogs(logs, limit)
   return {
     business,
-    logs: limitedLogs && limitedLogs
+    logs: limitedLogs && limitedLogs,
+    isLoaded: isLoaded(logs),
+    isEmpty: isEmpty(logs)
   }
 }
 
