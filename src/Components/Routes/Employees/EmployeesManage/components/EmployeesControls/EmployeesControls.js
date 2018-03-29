@@ -1,43 +1,31 @@
 import * as style from './EmployeesControls.scss'
 
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { checkAccess } from '../../methods/checkAccess'
-import { EmployeesRemove } from '../EmployeesRemove/EmployeesRemove'
-// import Toggle from 'react-toggled'
-// import { Button } from '../../../../../Blocks/Button/Button'
 
-export const EmployeesControls = ({
-  employees,
-  id,
-  doorsAuth,
-  doors,
-  removeUser,
-  loading
-}) => (
-  <div className={style.container}>
+export const EmployeesControls = ({ children, doorsAuth, doors }) => (
+  <Fragment>
+    <h3>Manage Access</h3>
     <div className={style.wrapper}>
-      <h3>Manage Access</h3>
       <ul className={style.doors}>
         {doorsAuth &&
           doors &&
           Object.keys(doors).map(doorId => (
             <li key={doorId}>
               <p className={style.doorsName}>{doors[doorId].name}:</p>
+              {children({ doorId })}
             </li>
           ))}
       </ul>
-      <EmployeesRemove {...{ id, removeUser, loading }} />
+      <div className={style.icon}>
+        <i className="fa fa-user-circle-o fa-4x" aria-hidden="true" />
+      </div>
     </div>
-  </div>
+  </Fragment>
 )
 
 EmployeesControls.propTypes = {
+  children: PropTypes.func,
   doors: PropTypes.object,
-  doorsAuth: PropTypes.object,
-  employees: PropTypes.object,
-  error: PropTypes.string,
-  id: PropTypes.string,
-  loading: PropTypes.bool,
-  removeUser: PropTypes.func
+  doorsAuth: PropTypes.object
 }

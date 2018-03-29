@@ -5,7 +5,7 @@ import {
 } from './constants'
 import { getAuthUid } from '../../../../../store/firebase/authSelectors'
 
-export const removeUser = (id, businessId) => async (
+export const removeUser = ({ id, businessId }) => async (
   dispatch,
   getState,
   getFirebase
@@ -33,6 +33,50 @@ export const removeUser = (id, businessId) => async (
 
     await Promise.all([removeUsers(), removeBusiness()])
 
+    dispatch({
+      type: STOP_LOADING_MANAGE,
+      payload: null
+    })
+  } catch (e) {
+    dispatch({
+      type: SET_ERROR_MANAGE,
+      payload: e.message
+    })
+  }
+}
+
+export const removeAccess = ({ id, doorId, businessId }) => async (
+  dispatch,
+  getState,
+  getFirebase
+) => {
+  dispatch({ type: START_LOADING_MANAGE, payload: null })
+
+  const firebase = getFirebase()
+  try {
+    await firebase.remove(`doors/${businessId}/${doorId}/${id}`)
+    dispatch({
+      type: STOP_LOADING_MANAGE,
+      payload: null
+    })
+  } catch (e) {
+    dispatch({
+      type: SET_ERROR_MANAGE,
+      payload: e.message
+    })
+  }
+}
+
+export const addAccess = ({ id, doorId, businessId }) => async (
+  dispatch,
+  getState,
+  getFirebase
+) => {
+  dispatch({ type: START_LOADING_MANAGE, payload: null })
+
+  const firebase = getFirebase()
+  try {
+    await firebase.uniqueSet(`doors/${businessId}/${doorId}/${id}`, true)
     dispatch({
       type: STOP_LOADING_MANAGE,
       payload: null

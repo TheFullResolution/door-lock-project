@@ -4,51 +4,50 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Toggle from 'react-toggled'
 import { Button } from '../../../../../Blocks/Button/Button'
-import { LoadingSmall } from '../../../../../Blocks/Loading/LoadingSmall'
 
 export const EmployeesRemove = ({ id, removeUser, loading }) => {
   const onClick = () => {
     removeUser(id)
   }
-  return loading ? (
-    <LoadingSmall />
-  ) : (
-    <Toggle>
-      {({ on, getTogglerProps }) => (
-        <Fragment>
-          <div className={style.removeWrapper}>
-            <Button
-              version="button"
-              className={style.remove}
-              {...getTogglerProps()}
-            >
-              {on ? 'Cancel' : 'Remove Employee'}
-            </Button>
-          </div>
-
-          {on && (
-            <div className={style.removeContainer}>
-              <p>Are you sure?</p>
+  return (
+    !loading && (
+      <Toggle>
+        {({ on, getTogglerProps }) => (
+          <Fragment>
+            <div className={style.removeWrapper}>
               <Button
                 version="button"
-                className={style.finalRemove}
-                onClick={onClick}
+                className={style.remove}
+                {...getTogglerProps()}
               >
-                <i
-                  className="fa fa-exclamation-circle fa-lg"
-                  aria-hidden="true"
-                />
-                YES, REMOVE EMPLOYEE
-                <i
-                  className="fa fa-exclamation-circle fa-lg"
-                  aria-hidden="true"
-                />
+                {on ? 'Cancel' : 'Remove Employee'}
               </Button>
             </div>
-          )}
-        </Fragment>
-      )}
-    </Toggle>
+
+            {on && (
+              <div className={style.removeContainer}>
+                <p>Are you sure?</p>
+                <Button
+                  version="button"
+                  className={style.finalRemove}
+                  onClick={onClick}
+                >
+                  <i
+                    className="fa fa-exclamation-circle fa-lg"
+                    aria-hidden="true"
+                  />
+                  YES, REMOVE EMPLOYEE
+                  <i
+                    className="fa fa-exclamation-circle fa-lg"
+                    aria-hidden="true"
+                  />
+                </Button>
+              </div>
+            )}
+          </Fragment>
+        )}
+      </Toggle>
+    )
   )
 }
 

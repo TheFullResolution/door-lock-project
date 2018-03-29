@@ -1,17 +1,11 @@
 import * as style from './Loading.scss'
 
 import React from 'react'
-import { combineClassName } from '../../../helpers/classAndIds'
+import { LoadingIcon } from './LoadingIcon'
 
 export const LoadingSmall = () => (
   <div>
-    <i
-      className={combineClassName(
-        'fa fa-cog fa-spin fa-2x fa-fw',
-        style.loader
-      )}
-      aria-hidden="true"
-    />
+    <LoadingIcon size="fa-2x" />
     <p className={style.loading}>Loading</p>
   </div>
 )

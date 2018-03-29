@@ -7,19 +7,24 @@ import Toggle from 'react-toggled'
 import { Button } from '../../../Blocks/Button/Button'
 import { combineClassName } from '../../../../helpers/classAndIds'
 import { connect } from 'react-redux'
-import { removeUser } from './state/actions'
+import { addAccess, removeAccess, removeUser } from './state/actions'
 import {
   getEmployeesManageError,
   getEmployeesManageLoading
 } from './state/getEmployeesManage'
 import { EmployeesControls } from './components/EmployeesControls/EmployeesControls'
+import { EmployeeAccessToggle } from './components/EmployeeAccessToggle/EmployeeAccessToggle'
+import { EmployeesRemove } from './components/EmployeesRemove/EmployeesRemove'
+import { checkAccess } from './methods/checkAccess'
 
 export const EmployeesManageComponent = ({
+  addAccess,
+  doors,
+  doorsAuth,
   employees,
   id,
-  doorsAuth,
-  doors,
   loading,
+  removeAccess,
   removeUser
 }) => (
   <li className={style.employee}>
@@ -44,9 +49,19 @@ export const EmployeesManageComponent = ({
             </Button>
           </div>
           {on && (
-            <EmployeesControls
-              {...{ employees, id, doorsAuth, doors, loading, removeUser }}
-            />
+            <div className={style.controlsContainer}>
+              <div className={style.controlsWrapper}>
+                <EmployeesControls {...{ doors, doorsAuth }}>
+                  {({ doorId }) => (
+                    <EmployeeAccessToggle
+                      {...{ doorId, id, addAccess, loading, removeAccess }}
+                      access={checkAccess(doorId, doorsAuth, id)}
+                    />
+                  )}
+                </EmployeesControls>
+                <EmployeesRemove {...{ id, removeUser, loading }} />
+              </div>
+            </div>
           )}
         </Fragment>
       )}
@@ -55,12 +70,14 @@ export const EmployeesManageComponent = ({
 )
 
 EmployeesManageComponent.propTypes = {
+  addAccess: PropTypes.func,
   doors: PropTypes.object,
   doorsAuth: PropTypes.object,
   employees: PropTypes.object,
   error: PropTypes.string,
   id: PropTypes.string,
   loading: PropTypes.bool,
+  removeAccess: PropTypes.func,
   removeUser: PropTypes.func
 }
 
@@ -70,8 +87,14 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  addAccess: (id, doorId) => {
+    dispatch(addAccess({ id, doorId, businessId: props.businessId }))
+  },
+  removeAccess: (id, doorId) => {
+    dispatch(removeAccess({ id, doorId, businessId: props.businessId }))
+  },
   removeUser: id => {
-    dispatch(removeUser(id, props.businessId))
+    dispatch(removeUser({ id, businessId: props.businessId }))
   }
 })
 

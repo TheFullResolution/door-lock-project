@@ -1,23 +1,15 @@
-.container {
-  border-top: 1px solid $app-gray;
-  margin: {
-    top: $padding-single;
+.wrapper {
+  @include mobile-big {
+    display: block;
   }
-  padding: {
-    bottom: $padding-single;
-    top: $padding-double;
-  }
-
-  h3 {
-    @include heading-typography(h3);
-    margin-top: 0;
-  }
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
 }
 
-.wrapper {
-  padding: {
-    left: $padding-double;
-    right: $padding-double;
+.icon {
+  @include mobile-big {
+    display: none;
   }
 }
 
@@ -26,13 +18,17 @@
   padding: 0;
 
   li {
-    margin: {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: {
       bottom: $padding-single;
-      top: $padding-double;
+      top: $padding-single;
     }
   }
 }
 
 .doorsName {
   @include heading-typography(h4);
+  margin-right: $padding-single;
 }

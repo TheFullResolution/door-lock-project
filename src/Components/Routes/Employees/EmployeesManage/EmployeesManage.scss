@@ -23,7 +23,7 @@
 }
 
 .button {
-  @include colorise-btn($app-green);
+  @include colorise-btn($app-yellow);
   @include heading-typography(h3, $app-black);
   display: block;
   margin: {
@@ -34,5 +34,28 @@
 
   i {
     margin-left: $padding-half;
+  }
+}
+
+.controlsContainer {
+  border-top: 1px solid $app-gray;
+  margin: {
+    top: $padding-single;
+  }
+  padding: {
+    bottom: $padding-single;
+    top: $padding-double;
+  }
+
+  h3 {
+    @include heading-typography(h3);
+    margin-top: 0;
+  }
+}
+
+.controlsWrapper {
+  padding: {
+    left: $padding-double;
+    right: $padding-double;
   }
 }

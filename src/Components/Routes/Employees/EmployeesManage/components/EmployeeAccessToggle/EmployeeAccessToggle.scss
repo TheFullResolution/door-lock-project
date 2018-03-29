@@ -1,0 +1,20 @@
+.buttonAdd {
+  @include colorise-btn($app-green);
+  display: block;
+  min-width: 180px;
+  text-align: left;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
+
+.buttonRemove {
+  @include colorise-btn($app-red);
+  display: block;
+  min-width: 180px;
+
+  i {
+    margin-right: $padding-half;
+  }
+}
