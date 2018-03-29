@@ -26,33 +26,17 @@ export const removeUser = (id, businessId) => async (
 
   try {
     const removeUsers = () =>
-      firebase
-        .remove(`users/${id}/businesses/${businessId}`, true)
-        .then(snapshot => {
-          return snapshot.val()
-        })
+      firebase.remove(`users/${id}/businesses/${businessId}`)
 
     const removeBusiness = () =>
-      firebase
-        .remove(`businesses/${businessId}/employees/${id}`, true)
-        .then(snapshot => {
-          return snapshot.val()
-        })
+      firebase.remove(`businesses/${businessId}/employees/${id}`)
 
-    const [user, business] = await Promise.all([
-      removeUsers(),
-      removeBusiness()
-    ])
-    console.log(user, business)
-    // if (user && business) {
+    await Promise.all([removeUsers(), removeBusiness()])
 
     dispatch({
       type: STOP_LOADING_MANAGE,
       payload: null
     })
-    // } else {
-    //   throw new Error('Something went wrong, try again later')
-    // }
   } catch (e) {
     dispatch({
       type: SET_ERROR_MANAGE,

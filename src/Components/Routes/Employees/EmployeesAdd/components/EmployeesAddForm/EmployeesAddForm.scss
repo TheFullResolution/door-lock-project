@@ -1,5 +1,9 @@
 .form {
+  @include mobile-big {
+    margin-right: 0;
+  }
   flex: 1 1 45%;
+  margin-right: $padding-single;
   max-width: 400px;
 
   h3 {
