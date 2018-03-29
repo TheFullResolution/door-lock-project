@@ -26,7 +26,9 @@ const SignUpComponent = ({
   profileLoaded,
   location
 }) => {
-  const { from } = location.state || { from: { pathname: '/' } }
+  const { from } = location.state || {
+    from: { pathname: `${process.env.PUBLIC_URL}/` }
+  }
   if (authExists) {
     return <Redirect to={from} />
   }
@@ -35,7 +37,11 @@ const SignUpComponent = ({
     <div className={style.container}>
       <h1>Sign Up Page</h1>
       <p>Create account so you manager can add you to the employee list</p>
-      <Button version={'link'} to={'/login'} className={style.link}>
+      <Button
+        version={'link'}
+        to={`${process.env.PUBLIC_URL}/login`}
+        className={style.link}
+      >
         Login Instead
       </Button>
       {!authLoaded || !profileLoaded ? (

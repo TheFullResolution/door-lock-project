@@ -11,22 +11,37 @@ import { PrivateRoute } from '../Blocks/PrivateRoute/PrivateRoute'
 import { Header } from '../Blocks/Header/Header'
 import { Logs } from '../Routes/Logs/Logs'
 import { Employees } from '../Routes/Employees/Employees'
-import {SignUp} from '../Routes/SignUp/SignUp'
+import { SignUp } from '../Routes/SignUp/SignUp'
 
-export const App = () => (
+export const App = props => (
   <div className={style.container}>
     <Header />
 
     <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/restricted" component={Restricted} />
+      <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
+      <Route path={`${process.env.PUBLIC_URL}/signup`} component={SignUp} />
+      <Route
+        path={`${process.env.PUBLIC_URL}/restricted`}
+        component={Restricted}
+      />
 
-      <PrivateRoute path="/" component={Home} exact={true} />
-      <PrivateRoute path="/dashboard" component={Dashboard} adminOnly={true} />
-      <PrivateRoute path="/logs/:id" component={Logs} adminOnly={true} />
       <PrivateRoute
-        path="/employees/:id"
+        path={`${process.env.PUBLIC_URL}/`}
+        component={Home}
+        exact={true}
+      />
+      <PrivateRoute
+        path={`${process.env.PUBLIC_URL}/dashboard`}
+        component={Dashboard}
+        adminOnly={true}
+      />
+      <PrivateRoute
+        path={`${process.env.PUBLIC_URL}/logs/:id`}
+        component={Logs}
+        adminOnly={true}
+      />
+      <PrivateRoute
+        path={`${process.env.PUBLIC_URL}/employees/:id`}
         component={Employees}
         adminOnly={true}
       />

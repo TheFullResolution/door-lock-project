@@ -55,7 +55,7 @@ export class PrivateRouteComponent extends Component {
             return (
               <Redirect
                 to={{
-                  pathname: '/restricted'
+                  pathname: `${process.env.PUBLIC_URL}/restricted`
                 }}
               />
             )
@@ -64,7 +64,7 @@ export class PrivateRouteComponent extends Component {
           return (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: `${process.env.PUBLIC_URL}/login`,
                 state: { from: props.location }
               }}
             />

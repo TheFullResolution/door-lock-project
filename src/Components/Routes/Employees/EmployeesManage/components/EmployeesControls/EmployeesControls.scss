@@ -30,5 +30,8 @@
 
 .doorsName {
   @include heading-typography(h4);
+  align-items: center;
+  display: flex;
   margin-right: $padding-single;
+  min-height: 45px;
 }

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 const renderMessage = access => {
   switch (access) {
     case null:
-      return 'state ready'
+      return 'status: ready'
     case true:
       return 'access granted'
     case false:

@@ -2,7 +2,7 @@
   "name": "temperature-graph",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.thefullresolution.com/temperature",
+  "homepage": "https://www.thefullresolution.com/doorlock/",
   "dependencies": {
     "autoprefixer": "7.2.5",
     "babel-core": "6.26.0",
@@ -67,8 +67,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build":
-      "node scripts/build.js && concurrently \"node scripts/server-build.js\" \"cypress run --config baseUrl=http://localhost:8080 \"",
+    "build": "node scripts/build.js",
     "cypress:open": "cypress open",
     "test": "cypress run"
   },

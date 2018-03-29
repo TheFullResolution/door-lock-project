@@ -22,15 +22,17 @@ export const EmployeeAccessToggle = ({
   return (
     <div>
       {loading ? (
-        <LoadingIcon />
+        <LoadingIcon size="fa-2x" />
       ) : access ? (
         <Button
           version="button"
           className={style.buttonRemove}
           onClick={onClickRemove}
         >
-          <i className="fa fa-minus fa-lg" aria-hidden="true" />
-          Revoke Access
+          <span>
+            <i className="fa fa-minus fa-lg" aria-hidden="true" />
+          </span>
+          <span>Revoke Access</span>
         </Button>
       ) : (
         <Button
@@ -38,8 +40,10 @@ export const EmployeeAccessToggle = ({
           className={style.buttonAdd}
           onClick={onClickAdd}
         >
-          <i className="fa fa-plus fa-lg" aria-hidden="true" />
-          Add Access
+          <span>
+            <i className="fa fa-plus fa-lg" aria-hidden="true" />
+          </span>
+          <span>Add Access</span>
         </Button>
       )}
     </div>

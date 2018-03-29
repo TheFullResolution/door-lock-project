@@ -1,14 +1,10 @@
-import * as style from './NotFound.scss';
+import * as style from './NotFound.scss'
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 
 export const NotFound = () => (
-  <div>
-    NotFound
+  <div className={style.container}>
+    <h1>404</h1>
+    <p>Page Not Found</p>
   </div>
-);
-
-NotFound.propTypes = {
-
-};
+)

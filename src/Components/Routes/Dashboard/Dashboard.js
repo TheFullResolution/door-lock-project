@@ -23,7 +23,7 @@ class DashboardComponent extends Component {
             </h2>
             <Button
               version={'link'}
-              to={`/employees/${el.id}`}
+              to={`${process.env.PUBLIC_URL}/employees/${el.id}`}
               className={style.button}
             >
               Employees
@@ -52,7 +52,7 @@ class DashboardComponent extends Component {
                       <LogsTable business={el} limit={5} />
                       <Button
                         version={'link'}
-                        to={`logs/${el.id}`}
+                        to={`${process.env.PUBLIC_URL}/logs/${el.id}`}
                         className={style.button}
                       >
                         See all Logs

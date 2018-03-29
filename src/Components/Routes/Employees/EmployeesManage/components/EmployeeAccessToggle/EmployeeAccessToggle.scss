@@ -1,8 +1,9 @@
 .buttonAdd {
   @include colorise-btn($app-green);
-  display: block;
-  min-width: 180px;
-  text-align: left;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-width: 190px;
 
   i {
     margin-right: $padding-half;
@@ -11,8 +12,9 @@
 
 .buttonRemove {
   @include colorise-btn($app-red);
-  display: block;
-  min-width: 180px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 190px;
 
   i {
     margin-right: $padding-half;

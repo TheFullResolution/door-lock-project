@@ -29,8 +29,10 @@ export const HeaderComponent = ({
           <nav>
             {profileAdmin && (
               <Fragment>
-                <Link to="/">home</Link>
-                <Link to="/dashboard">dashboard</Link>
+                <Link to={`${process.env.PUBLIC_URL}/`}>home</Link>
+                <Link to={`${process.env.PUBLIC_URL}/dashboard`}>
+                  dashboard
+                </Link>
               </Fragment>
             )}
             <Button className={style.button} version="button" onClick={onClick}>

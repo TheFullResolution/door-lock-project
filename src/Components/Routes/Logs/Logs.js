@@ -13,7 +13,11 @@ export const LogsComponent = ({ business }) => (
       All Logs of <span className={style.name}>{business.name}</span>
     </h1>
     {business && <LogsTable business={business} />}
-    <Button version={'link'} to={'/dashboard'} className={style.linkBack}>
+    <Button
+      version={'link'}
+      to={`${process.env.PUBLIC_URL}/dashboard`}
+      className={style.linkBack}
+    >
       Go Back to Dashboard
     </Button>
   </div>

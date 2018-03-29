@@ -32,7 +32,11 @@ const EmployeesComponent = ({ business, doorsAuth, match }) => {
         <h2>Add Employees</h2>
         <EmployeesAdd businessId={match.params.id} />
       </div>
-      <Button version={'link'} to={'/dashboard'} className={style.linkBack}>
+      <Button
+        version={'link'}
+        to={`${process.env.PUBLIC_URL}/dashboard`}
+        className={style.linkBack}
+      >
         Go Back to Dashboard
       </Button>
     </div>

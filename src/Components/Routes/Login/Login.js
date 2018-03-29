@@ -17,16 +17,18 @@ import {
   getIfProfileAdmin,
   getIfProfileLoaded
 } from '../../../store/firebase/profileSelectors'
-import {Button} from '../../Blocks/Button/Button'
+import { Button } from '../../Blocks/Button/Button'
 
 const LoginComponent = ({
   authExists,
   firebase,
   authLoaded,
   profileLoaded,
-  location,
+  location
 }) => {
-  const { from } = location.state || { from: { pathname: '/' } }
+  const { from } = location.state || {
+    from: { pathname: `${process.env.PUBLIC_URL}/` }
+  }
   if (authExists) {
     return <Redirect to={from} />
   }
@@ -35,7 +37,11 @@ const LoginComponent = ({
     <div className={style.container}>
       <h1>Login Page</h1>
       <p>To use this app you have to login first</p>
-      <Button version={'link'} to={'/signup'} className={style.link}>
+      <Button
+        version={'link'}
+        to={`${process.env.PUBLIC_URL}/signup`}
+        className={style.link}
+      >
         Sign up Instead
       </Button>
       {!authLoaded || !profileLoaded ? (
