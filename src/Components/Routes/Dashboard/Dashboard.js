@@ -49,7 +49,7 @@ class DashboardComponent extends Component {
 
                   {on && (
                     <Fragment>
-                      <LogsTable business={el} limit={5} />
+                      <div className={style.divider}/>
                       <Button
                         version={'link'}
                         to={`${process.env.PUBLIC_URL}/logs/${el.id}`}
@@ -57,6 +57,7 @@ class DashboardComponent extends Component {
                       >
                         See all Logs
                       </Button>
+                      <LogsTable business={el} limit={5} />
                     </Fragment>
                   )}
                 </Fragment>

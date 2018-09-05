@@ -52,6 +52,13 @@
   }
 
   .row {
+    @include mobile-small {
+      flex-direction: column;
+
+      > * {
+        margin-bottom: $padding-half;
+      }
+    }
     align-items: center;
     display: flex;
     flex-wrap: wrap;
