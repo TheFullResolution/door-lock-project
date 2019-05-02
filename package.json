@@ -2,7 +2,7 @@
   "name": "temperature-graph",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.thefullresolution.com/doorlock/",
+  "homepage": "https://door-lock-project.netlify.com/",
   "dependencies": {
     "autoprefixer": "7.2.5",
     "babel-core": "6.26.0",
@@ -116,12 +116,6 @@
     ],
     "rules": {
       "no-extend-native": 0
-    },
-    "plugins": [
-      "cypress"
-    ],
-    "env": {
-      "cypress/globals": true
     }
   }
 }

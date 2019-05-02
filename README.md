@@ -16,7 +16,7 @@ Project setup is an ejected [create-react-app](https://github.com/facebook/creat
 
 ## Usage Notes
 
-The project is available on-line: https://www.thefullresolution.com/doorlock/
+The project is available on-line: [https://door-lock-project.netlify.com/](https://door-lock-project.netlify.com/)
 
 To run project locally, clone the repo, use command `yarn install`, then `yarn start`
 
