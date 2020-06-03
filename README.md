@@ -16,7 +16,7 @@ Project setup is an ejected [create-react-app](https://github.com/facebook/creat
 
 ## Usage Notes
 
-The project is available on-line: [https://door-lock-project.netlify.com/](https://door-lock-project.netlify.com/) [![Netlify Status](https://api.netlify.com/api/v1/badges/41d73da9-80a1-403a-ae16-9fd5f5a6e82f/deploy-status)](https://app.netlify.com/sites/door-lock-project/deploys)
+The project is available on-line: [https://door-lock-project.netlify.app](https://door-lock-project.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/41d73da9-80a1-403a-ae16-9fd5f5a6e82f/deploy-status)](https://app.netlify.com/sites/door-lock-project/deploys)
 
 To run project locally, clone the repo, use command `yarn install`, then `yarn start`
 
